@@ -11,11 +11,6 @@ import {
     signInWithPopup
 } from "firebase/auth"
 
-import {
-    doc, 
-    setDoc
-} from "firebase/firestore";
-
 //Create Context
 const userAuthContext = createContext();
 
@@ -31,7 +26,7 @@ export function UserAuthContextProvider({children}){
 
 
     function googleLogin(){
-        return signInWithRedirect(auth, googleProvider);
+        return signInWithPopup(auth, googleProvider);
         
     }
 
@@ -55,10 +50,6 @@ export function UserAuthContextProvider({children}){
             unsubscribe();
         }
     }, []);
-
-    function createDoc(){
-        return setDoc()
-    }
 
     return(
         <userAuthContext.Provider value={{user, logOut, googleLogin}}>

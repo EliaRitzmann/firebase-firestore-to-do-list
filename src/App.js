@@ -1,10 +1,19 @@
+import { UserAuthContextProvider } from "./contexts/FirebaseContext";
+import {BrowserRouter as Router, Routes, Route, BrowserRouter} from 'react-router-dom'
+
+import { Home } from "./pages/Home";
+
 
 
 function App() {
   return (
-    <div>
-      <h1>hello world</h1>
-    </div>
+    <UserAuthContextProvider>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+      </Routes>
+      </BrowserRouter>
+      </UserAuthContextProvider>
   );
 }
 
