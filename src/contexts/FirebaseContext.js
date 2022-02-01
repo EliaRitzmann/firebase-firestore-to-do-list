@@ -8,7 +8,7 @@ import {
     signOut, 
     onAuthStateChanged, 
     GoogleAuthProvider, 
-    signInWithPopup
+    signInWithRedirect
 } from "firebase/auth"
 
 //Create Context
@@ -26,7 +26,7 @@ export function UserAuthContextProvider({children}){
 
 
     function googleLogin(){
-        return signInWithPopup(auth, googleProvider);
+        return signInWithRedirect(auth, googleProvider);
         
     }
 
