@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { firestore } from '../api/firebase';
 import { collection, addDoc } from 'firebase/firestore';
+import { useAuth } from '../contexts/FirebaseContext';
 
 export const AddElement = (props) => {
     const [text, setText] = useState("text")
     const [render, setRender] = useState(false)
     const listCollectionRef = collection(firestore, "to-do-list")
+    const {user} = useAuth();
 
     function change() {
         setRender(prevRender => !prevRender)
@@ -13,7 +15,7 @@ export const AddElement = (props) => {
     }
 
     async function save() {
-        await addDoc(listCollectionRef, {text: text, done: false})
+        await addDoc(listCollectionRef, {userId: user.uid ,text: text, done: false})
         console.log("create user")
         window.location.reload();
     }

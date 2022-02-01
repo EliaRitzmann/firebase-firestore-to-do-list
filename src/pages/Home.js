@@ -36,7 +36,10 @@ export const Home = () => {
   const element = []
 
   for (var i = 0; i < list.length; i++) {
-    element.push(<Element item={list[list.length - i-1]}></Element>)
+    if(list[i].userId == user?.uid){
+      element.push(<Element item={list[i]}></Element>)
+      console.log(list[i].userId)
+    }
   }
 
   return (
