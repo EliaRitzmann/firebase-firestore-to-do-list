@@ -6,6 +6,7 @@ import pic from "../images/blank-profile-picture.png"
 import { Element } from '../components/Element'
 import { collection, getDocs } from 'firebase/firestore';
 import { firestore } from '../api/firebase';
+import { AddElement } from '../components/AddElement';
 
 export const Home = () => {
   const { user, logOut } = useAuth();
@@ -35,7 +36,7 @@ export const Home = () => {
   const element = []
 
   for (var i = 0; i < list.length; i++) {
-    element.push(<Element item={list[i]}></Element>)
+    element.push(<Element item={list[list.length - i-1]}></Element>)
   }
 
   return (
@@ -59,8 +60,10 @@ export const Home = () => {
         <main className='flex items-center flex-col'>
           <div className='divide-y divide-slate-700 '>
             {element}
+            <AddElement></AddElement>
           </div>
-          <button className='bg-red-400 text-white py-2 px-4 rounded inline-flex items-center mt-2' onClick={handleLogOut}>
+
+          <button className='bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded inline-flex items-center mt-2' onClick={handleLogOut}>
           Log out
         </button>
       </main>
