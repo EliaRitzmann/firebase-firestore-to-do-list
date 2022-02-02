@@ -19,10 +19,10 @@ export const List = () => {
 
     
 
-    const colRef = query(collection(firestore, "files"), where("userId", "==", "user.uid"))
+    const colRef = query(collection(firestore, "files"), where("userId", "==", user.uid))
         for(var i = 0; i < files.length; i++){
-        
-            elements.push(<Element item={files[i]}></Element>)
+            console.log(files[i])
+            elements.push(<Element item={files[i]} key={i}></Element>)
         }
 
     
@@ -30,7 +30,7 @@ export const List = () => {
     onSnapshot(colRef,(snapshot) => {
         //why
         setFiles([])
-        setFiles(snapshot.docs.map((doc) => doc.data()))
+        setFiles(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id})))
     }
         
     ),

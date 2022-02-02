@@ -31,15 +31,15 @@ export const Home = () => {
       <div>
         <nav className='flex items-start justify-between m-3 h-10 border-b-2 '>
           <div className='w-40'>
-            <h1 class="font-extrabold text-transparent text-2xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
+            <h1 className="font-extrabold text-transparent text-2xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
             >
               To do List
             </h1>
           </div>
 
           <div className='flex gap-2 items-center justify-end w-40'>
-            <button className='text-lg font-medium' onClick={handleLogOut}>{user.displayName ? user.displayName : user.email}</button>
-            <img class="w-8 h-8 rounded-full" src={user.photoURL ? user.photoURL : pic} alt="user photo" />
+            <button className='text-lg font-medium invisible sm:visible' onClick={handleLogOut}>{user.displayName ? user.displayName : user.email}</button>
+            <img className="w-8 h-8 rounded-full" src={user.photoURL ? user.photoURL : pic} alt="user photo" />
           </div>
         </nav>
 
