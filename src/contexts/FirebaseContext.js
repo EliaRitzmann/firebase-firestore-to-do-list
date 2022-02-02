@@ -22,12 +22,11 @@ export function useAuth(){
 }
 
 export function UserAuthContextProvider({children}){
-    const [user, setUser] = useState({});
-
+    const [user, setUser] = useState();
+    const [loading, setLoading] = useState(true);
 
     function googleLogin(){
         return signInWithRedirect(auth, googleProvider);
-        
     }
 
 
@@ -37,23 +36,15 @@ export function UserAuthContextProvider({children}){
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            console.log(currentUser)
-            if(currentUser){
-                setUser(currentUser);
-            }
-            else{
-                setUser(null)
-            }
-            
-        });
-        return () => {
-            unsubscribe();
-        }
+            setUser(currentUser)
+            setLoading(false)
+        })
+        return unsubscribe
     }, []);
 
     return(
-        <userAuthContext.Provider value={{user, logOut, googleLogin}}>
-            {children}
+        <userAuthContext.Provider value={{user, logOut, googleLogin}}>     
+            {!loading && children}
         </userAuthContext.Provider>
     )
 }

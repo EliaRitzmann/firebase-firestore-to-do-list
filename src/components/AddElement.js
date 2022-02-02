@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
+
 import { firestore } from '../api/firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import {addDoc, collection, query, serverTimestamp } from 'firebase/firestore';
 import { useAuth } from '../contexts/FirebaseContext';
 
 export const AddElement = (props) => {
     const [text, setText] = useState("text")
     const [render, setRender] = useState(false)
-    const listCollectionRef = collection(firestore, "to-do-list")
     const {user} = useAuth();
+    const listCollectionRef = collection(firestore, "files")
+
+
 
     function change() {
         setRender(prevRender => !prevRender)
@@ -15,7 +18,8 @@ export const AddElement = (props) => {
     }
 
     async function save() {
-        await addDoc(listCollectionRef, {userId: user.uid ,text: text, done: false})
+        console.log("create user")
+        await addDoc(listCollectionRef, {userId: user.uid ,text: text, done: false, createdAt: serverTimestamp()})
         console.log("create user")
         window.location.reload();
     }
@@ -23,7 +27,6 @@ export const AddElement = (props) => {
     if (render) {
         return <div className='flex justify-between w-96 px-4 py-2 items-center'>
             <input type="text" placeholder='task' required onChange={event => setText(event.target.value)} className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-60 py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name'></input>
-
             <div>
                 <button onClick={save} class="inline-flex items-center justify-center w-10 h-10 mr-2 text-indigo-100 transition-colors duration-150 bg-green-500 rounded-lg focus:shadow-outline hover:bg-green-600">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

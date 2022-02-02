@@ -1,29 +1,17 @@
-import { isValidTimestamp } from '@firebase/util';
 import React, { useEffect, useState } from 'react';
 import { LoginPopup } from '../components/LoginPopup';
 import { useAuth } from '../contexts/FirebaseContext';
 import pic from "../images/blank-profile-picture.png"
-import { Element } from '../components/Element'
-import { collection, getDocs } from 'firebase/firestore';
-import { firestore } from '../api/firebase';
+
+
+import { List } from '../components/List';import { collection, query, getDocs, doc, where } from 'firebase/firestore';
+
 import { AddElement } from '../components/AddElement';
 
 export const Home = () => {
   const { user, logOut } = useAuth();
-  const [list, setlist] = useState([]);
-  const listCollectionRef = collection(firestore, "to-do-list")
 
 
-  useEffect(() => {
-
-    async function getList(){
-      const data = await getDocs(listCollectionRef)
-      setlist(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-      console.log(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-    }
-
-    getList()
-  }, [])
 
   function handleLogOut() {
     try {
@@ -33,14 +21,9 @@ export const Home = () => {
     }
   }
 
-  const element = []
+  
 
-  for (var i = 0; i < list.length; i++) {
-    if(list[i].userId == user?.uid){
-      element.push(<Element item={list[i]}></Element>)
-      console.log(list[i].userId)
-    }
-  }
+  
 
   return (
     <div>
@@ -55,14 +38,14 @@ export const Home = () => {
           </div>
 
           <div className='flex gap-2 items-center justify-end w-40'>
-            <button className='text-lg font-medium' onClick={handleLogOut}>{user?.displayName ? user.displayName : user?.email}</button>
-            <img class="w-8 h-8 rounded-full" src={user?.photoURL ? user.photoURL : pic} alt="user photo" />
+            <button className='text-lg font-medium' onClick={handleLogOut}>{user.displayName ? user.displayName : user.email}</button>
+            <img class="w-8 h-8 rounded-full" src={user.photoURL ? user.photoURL : pic} alt="user photo" />
           </div>
         </nav>
 
         <main className='flex items-center flex-col'>
           <div className='divide-y divide-slate-700 '>
-            {element}
+            <List></List>
             <AddElement></AddElement>
           </div>
 

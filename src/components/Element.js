@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { collection, updateDoc, doc, deleteDoc } from 'firebase/firestore';
-import { firestore } from '../api/firebase';
 
 export const Element = (props) => {
   const [edit, setEdit] = useState(false)
@@ -8,8 +7,6 @@ export const Element = (props) => {
   const [time, setTime] = useState(props.item.time)
   const [done, setDone] = useState(props.item.done)
   const [id, setId] = useState(props.item.id)
-
-  const listCollectionRef = collection(firestore, "to-do-list")
 
   function style() {
     if (!done) {
@@ -21,27 +18,21 @@ export const Element = (props) => {
 
   async function checkme() {
     setDone(prevDone => !prevDone)
-    const userDoc = doc(firestore, "to-do-list", id)
-    const newFields = {done: !done}
-    await updateDoc(userDoc, newFields)
+    
   }
 
   function change() {
     setEdit(prevEdit => !prevEdit)
-    console.log("change")
   }
 
   async function save() {
     setEdit(prevEdit => !prevEdit)
-    const userDoc = doc(firestore, "to-do-list", id)
-    const newFields = {text: text}
-    await updateDoc(userDoc, newFields)
+    
     window.location.reload();
   }
 
   async function deleteUser(){
-    const userDoc = doc(firestore, "to-do-list", id)
-    await deleteDoc(userDoc)
+    
     window.location.reload();
   }
 
