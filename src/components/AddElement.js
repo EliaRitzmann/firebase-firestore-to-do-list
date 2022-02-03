@@ -9,7 +9,7 @@ export const AddElement = (props) => {
     const [render, setRender] = useState(false)
     const {user} = useAuth();
     
-    const colRef = collection(firestore, "files")
+    const colRef = collection(firestore, "to-do-list")
 
 
 

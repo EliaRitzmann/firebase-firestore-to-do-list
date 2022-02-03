@@ -3,9 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
+//Firebase Auth
+import { UserAuthContextProvider } from "./contexts/FirebaseContext";
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <UserAuthContextProvider>
+        <App />
+    </UserAuthContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

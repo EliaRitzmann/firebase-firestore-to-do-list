@@ -12,6 +12,8 @@ export const LoginPopup = (props) => {
 
     function loginWithGoogle(){
         googleLogin()
+        //Wichtig aber warum?
+        navigate("/")
     }
 
   return (props.trigger) ? (

@@ -36,8 +36,10 @@ export const Element = (props) => {
     await deleteDoc(thisDoc)
   }
 
-  return <div className='flex justify-between w-96 px-4 py-2 items-center'>
-    {edit ? <input type="text" value={text} required onChange={event => setText(event.target.value)} className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-60 py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name'></input>
+  
+
+  return <div className='flex justify-between w-screen px-4 py-2 md:px-20 items-center'>
+    {edit ? <input type="text" value={text} on required onChange={event => setText(event.target.value)} className='bg-gray-200 appearance-none border-2 border-gray-200 rounded w-60 py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name'></input>
     : 
     <button className={style()} onClick={checkme}>{text}</button>
     }

@@ -6,12 +6,12 @@ import { useAuth } from '../contexts/FirebaseContext';
 //Firestore
 import {
     collection, query, where, 
-    doc, addDoc, onSnapshot 
+    doc, addDoc, onSnapshot, orderBy 
 } from 'firebase/firestore';
 import { firestore } from '../api/firebase';
 
 
-export const List = () => {
+export const List = (props) => {
     const {user} = useAuth()
 
     const [files, setFiles] = useState([]);
@@ -19,7 +19,7 @@ export const List = () => {
 
     
 
-    const colRef = query(collection(firestore, "files"), where("userId", "==", user.uid))
+    const colRef = query(collection(firestore, "to-do-list"), where("userId", "==", user.uid))
         for(var i = 0; i < files.length; i++){
             console.log(files[i])
             elements.push(<Element item={files[i]} key={i}></Element>)
@@ -28,7 +28,7 @@ export const List = () => {
     
     useEffect(() => 
     onSnapshot(colRef,(snapshot) => {
-        //why
+        
         setFiles([])
         setFiles(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id})))
     }
@@ -38,7 +38,7 @@ export const List = () => {
 
     
 
-  return <div>
+  return <div className='divide-y divide-slate-700 bg-slate-200'>
       {elements}
   </div>;
 };
