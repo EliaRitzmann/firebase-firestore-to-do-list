@@ -4,25 +4,27 @@ import { BrowserRouter as Router, Routes, Route, BrowserRouter, Link } from 'rea
 import { Home } from "./pages/Home";
 //Components
 import { LoginPopup } from './components/LoginPopup';
-//Firebase Auth
-import { useAuth } from "./contexts/FirebaseContext";
-import { Navbar } from './components/Navbar';
-import { Sidebar } from './components/Sidebar';
 
+import { Navbar } from './components/Navbar';
+
+import { useAuth } from './contexts/FirebaseContext';
 
 function App() {
-  const { user } = useAuth()
+  const {user} = useAuth()
 
-  return (
-    <BrowserRouter>
+  if(user){
+    return(<div>
       <link rel="manifest" href="/public/site.webmanifest"></link>
-      <LoginPopup trigger={user == null} />
-      <Navbar></Navbar>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
-  );
+    <Navbar></Navbar>
+    <Routes>
+      <Route path="/" element={<Home />} />
+    </Routes>
+    </div>)
+  }else{
+    return(
+      <LoginPopup></LoginPopup>
+    )
+  }
 }
 
 export default App;

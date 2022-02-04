@@ -8,6 +8,7 @@ export const Navbar = () => {
 
   //Firebase
   const { user, logOut } = useAuth();
+  console.log(user)
   function handleLogOut() {
     try {
       logOut()
@@ -43,11 +44,11 @@ export const Navbar = () => {
       <div className='flex items-center'><h1 className='font-semibold text-base'>{date}</h1></div>
 
       <div className="flex justify-end items-center gap-2 md:w-52">
-        <h1 className='md:block hidden'>{user?.displayName}</h1>
+        <h1 className='md:block hidden'>{user.displayName}</h1>
 
         <button onClick={handleLogOut}>
-          {user?.photoURL ?
-            <img className='h-10 w-10 rounded-full' src={user.photoURL} alt="Profile Picture" />
+          {user.photoURL ?
+            <img className='h-10 w-10 rounded-full' referrerPolicy='no-referrer' src={user.photoURL} alt="Profile Picture" />
             :
             <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />

@@ -6,11 +6,16 @@ import App from './App';
 //Firebase Auth
 import { UserAuthContextProvider } from "./contexts/FirebaseContext";
 
+//Routing
+import { BrowserRouter as Router, Routes, Route, BrowserRouter, Link } from 'react-router-dom'
+
 ReactDOM.render(
   <React.StrictMode>
-    <UserAuthContextProvider>
+    <BrowserRouter>
+      <UserAuthContextProvider>
         <App />
-    </UserAuthContextProvider>
+      </UserAuthContextProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

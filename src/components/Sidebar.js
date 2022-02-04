@@ -39,6 +39,7 @@ export const Sidebar = () => {
 
     ),
     []);
+    
   return <div className='flex flex-col items-center gap-2'>
     <a href="/" className='inline-flex w-4/5 h-10 items-center justify-between rounded-lg px-2 bg-white hover:shadow'>
       <div className='flex gap-2'>

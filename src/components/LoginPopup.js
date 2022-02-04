@@ -16,7 +16,7 @@ export const LoginPopup = (props) => {
         navigate("/")
     }
 
-  return (props.trigger) ? (
+  return(
       <div className='bg-black bg-opacity-50 absolute inset-0 flex justify-center items-center'>
           <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl  sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
               <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
@@ -36,7 +36,7 @@ export const LoginPopup = (props) => {
               </div>
             </div>
       </div>
-  ) : "";
+  );
   
 };
 
