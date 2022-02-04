@@ -57,15 +57,15 @@ export const Navbar = () => {
     </div>
 
     {/* Sidebar */}
-    <div className={sidebar ? 'bg-gray-300 h-full w-9/12 sm:w-64 fixed top-0 rounded-r-xl' : 'left-full fixed'}>
+    <div className={sidebar ? 'bg-gray-300 h-full w-9/12 sm:w-64 fixed top-0 rounded-r-xl shadow-black shadow-md' : 'left-full fixed'}>
 
       <div className='flex items-center justify-between p-4 h-16'>
-        <h1>To do List</h1>
+        <h1 className='ml-4 font-bold font-mono text-lg'>To do List</h1>
         <button onClick={showSidebar}><svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
         </svg></button>
       </div>
-            
+      <Sidebar></Sidebar>
     </div>
 
 

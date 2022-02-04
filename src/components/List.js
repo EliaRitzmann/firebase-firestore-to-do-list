@@ -19,7 +19,7 @@ export const List = (props) => {
 
     
 
-    const colRef = query(collection(firestore, "to-do-list"), where("userId", "==", user.uid))
+    const colRef = query(collection(firestore, "category"), where("userId", "==", user.uid))
         for(var i = 0; i < files.length; i++){
             console.log(files[i])
             elements.push(<Element item={files[i]} key={i}></Element>)
