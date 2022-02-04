@@ -9,7 +9,6 @@ export const Home = () => {
       <h1>Guten Morgen {user?.displayName}</h1>
 
       <div>
-      
       </div>
     </div>)
 

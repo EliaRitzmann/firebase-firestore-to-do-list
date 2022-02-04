@@ -22,6 +22,8 @@ function getcolor(color) {
     }
 }
 
+export const iconName = ["folder", "school", "business", "book", "bookmark", "calculator", "cake", "music", "puzzle", "bag"]
+export const colorName = ["black", "red", "blue", "lime", "green", "teal", "violet", "pink"]
 export function getIcons(icon, color) {
 
 
