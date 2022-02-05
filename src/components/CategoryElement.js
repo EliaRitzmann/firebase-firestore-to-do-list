@@ -10,7 +10,7 @@ export const CategoryElement = (props) => {
   }
   return <button onClick={open} className='inline-flex w-4/5 h-10 items-center justify-between rounded-lg px-2 bg-white hover:shadow'>
   <div className='flex gap-2'>
-    {getIcons(props.item.icon, props.item.color)}
+    {getIcons(props.item.icon, props.item.color, "small")}
     <span className='font-semibold'>{props.item.name}</span>
   </div>
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

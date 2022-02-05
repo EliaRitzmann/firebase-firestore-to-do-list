@@ -25,7 +25,7 @@ export const AddCategory = () => {
         key++;
         for(let i = 0; i < iconName.length; i++){
             key++;
-            icons.push(<button onClick={ e => setIconAndColor(iconName[i], colorName[j])} key={key}>{getIcons(iconName[i], colorName[j])}</button>)
+            icons.push(<button onClick={ e => setIconAndColor(iconName[i], colorName[j])} key={key}>{getIcons(iconName[i], colorName[j], "small")}</button>)
         }
     }
     
@@ -41,7 +41,7 @@ export const AddCategory = () => {
     return <div className='flex flex-col justify-center gap-2 w-4/5 h-10 rounded-lg px-2 bg-white hover:shadow'>
         <div className='inline-flex items-center justify-between'>
             <div className='flex gap-2'>
-                <button onClick={a => setShowModal(true)}>{getIcons(icon, color)}</button>
+                <button onClick={a => setShowModal(true)}>{getIcons(icon, color, "small")}</button>
                 <input onChange={event => setName(event.target.value)} type="text" maxLength={12} placeholder='Create new ' className=' w-full mr-2 p-1 bg-gray-300 h-6 rounded' />
             </div>
             <button onClick={add}>
@@ -59,7 +59,7 @@ export const AddCategory = () => {
                         </button>
                     </div>
                     <div>
-                        <div className='grid grid-cols-5 gap-2 p-2 sm:grid-cols-10'>
+                        <div className='grid grid-cols-6 gap-2 p-2 sm:grid-cols-10'>
                         {icons}
                         </div>
 

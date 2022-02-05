@@ -10,7 +10,7 @@ import { LoginPopup } from './components/LoginPopup';
 import { Navbar } from './components/Navbar';
 
 import { useAuth } from './contexts/FirebaseContext';
-import { Favorites } from './pages/Favorites';
+import { Favourites } from './pages/Favourites';
 import { AllCategorys } from './pages/AllCategorys';
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/category" element={<Category></Category>} />
       <Route path="/all" element={<AllCategorys></AllCategorys>} />
-      <Route path="/favorites" element={<Favorites></Favorites>} />
+      <Route path="/favourites" element={<Favourites></Favourites>} />
     </Routes>
     </div>)
   }else{
