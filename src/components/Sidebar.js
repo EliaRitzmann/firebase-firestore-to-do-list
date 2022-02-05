@@ -14,7 +14,7 @@ import { AddCategory } from './AddCategory';
 import { CategoryElement } from './CategoryElement';
 
 
-export const Sidebar = (props) => {
+export const Sidebar = () => {
 
   const { user } = useAuth()
 
@@ -32,7 +32,6 @@ export const Sidebar = (props) => {
 
   useEffect(() =>
     onSnapshot(colRef, (snapshot) => {
-
       setCategory([])
       setCategory(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     }
