@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../contexts/FirebaseContext';
 import { Sidebar } from './Sidebar';
 
-export const Navbar = () => {
+export const Navbar = (props) => {
 
   //Firebase
   const { user, logOut } = useAuth();

@@ -9,7 +9,7 @@ export const AddCategory = () => {
     const [showModal, setShowModal] = useState(false);
     const [name, setName] = useState("new category");
     const [icon, setIcon] = useState("folder")
-    const [color, setColor] = useState("blue")
+    const [color, setColor] = useState("black")
 
     const { user } = useAuth()
 
