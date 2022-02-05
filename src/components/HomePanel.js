@@ -1,7 +1,10 @@
 import React from 'react';
 import { getIcons } from '../icons/Icons';
+import { useNavigate } from 'react-router-dom';
 
 export const HomePanel = (props) => {
+  const navigate = useNavigate();
+
   function color(color){
     var out = "bg-gradient-to-br h-32 rounded-xl shadow shadow-slate-400"
     switch (color) {
@@ -23,12 +26,18 @@ export const HomePanel = (props) => {
         return out += " from-pink-500 to-pink-100"
       case "white":
         return out += " from-green-400 to-blue-500"
-  }}
+  }
+}
 
-  return <div className={color(props.color)} >
+function open(){
+  localStorage.setItem("categoryName", props.name)
+  navigate(props.link)
+}
+
+  return <button onClick={open} className={color(props.color)} >
     <div className='flex gap-1 p-2 items-center'>
     <div>{getIcons(props.icon, "white", "big")}</div>
     <h1 className='text-white font-semibold text-lg'>{props.name}</h1>
     </div>
-  </div>;
+  </button>;
 };

@@ -45,13 +45,17 @@ export const Home = () => {
                 favouriteCount++;
             }
         }
-        elements.push(<HomePanel itemCount={favouriteCount} name="favourite" color="red" icon="heart" key="0"/>)
+        elements.push(<HomePanel itemCount={favouriteCount} name="Favourites" color="red" icon="heart" key="0" link={"/favourites"}/>)
 
         for(var i = 0; i < category.length; i++){
-            elements.push(<HomePanel itemCount="69" name={category[i].name} color={category[i].color} icon={category[i].icon} key={i + 1}/>)
+            elements.push(<HomePanel itemCount="69" name={category[i].name} color={category[i].color} icon={category[i].icon} link={"/category"} key={i + 1}/>)
         }
 
     
-    return <div className='grid grid-cols-2 gap-2 m-4'>{elements}</div>;
+    return <div>
+        <h1 className='font-bold text-xl ml-5'>Home</h1>
+        <div className='grid grid-cols-2 gap-2 m-4 sm:grid-cols-3 md:grid-cols-4'>{elements}</div>
+    </div>
+
 
 };
