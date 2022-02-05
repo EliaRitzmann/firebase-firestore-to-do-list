@@ -34,10 +34,10 @@ function open(){
   navigate(props.link)
 }
 
-  return <button onClick={open} className={color(props.color)} >
+  return <div onClick={open} className={color(props.color)} >
     <div className='flex gap-1 p-2 items-center'>
     <div>{getIcons(props.icon, "white", "big")}</div>
     <h1 className='text-white font-semibold text-lg'>{props.name}</h1>
     </div>
-  </button>;
+  </div>;
 };

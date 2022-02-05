@@ -58,7 +58,7 @@ export const Navbar = () => {
     </div>
 
     {/* Sidebar */}
-    <div className={sidebar ? 'bg-gray-300 h-full w-9/12 sm:w-64 fixed top-0 rounded-r-xl shadow-black shadow-md' : 'left-full fixed'}>
+    <div className={sidebar ? 'h-full w-9/12 sm:w-64 fixed top-0 rounded-r-xl shadow-black shadow-md backdrop-blur-3xl' : 'left-full fixed'}>
 
       <div className='flex items-center justify-between p-4 h-16'>
         <h1 className='ml-4 font-bold font-mono text-lg'>To do List</h1>

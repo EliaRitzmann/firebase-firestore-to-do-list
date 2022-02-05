@@ -38,13 +38,13 @@ export const AddCategory = () => {
     }
 
 
-    return <div className='flex flex-col justify-center gap-2 w-4/5 h-10 rounded-lg px-2 bg-white hover:shadow'>
+    return <div className='flex flex-col justify-center gap-2 w-4/5 h-10 rounded-lg px-2 bg-white shadow shadow-gray-400 '>
         <div className='inline-flex items-center justify-between'>
             <div className='flex gap-2'>
                 <button onClick={a => setShowModal(true)}>{getIcons(icon, color, "small")}</button>
                 <input onChange={event => setName(event.target.value)} type="text" maxLength={12} placeholder='Create new ' className=' w-full mr-2 p-1 bg-gray-300 h-6 rounded' />
             </div>
-            <button onClick={add}>
+            <button onClick={add} className="bg-gray-300 rounded-md p-0.5 ">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>

@@ -52,7 +52,7 @@ export const Home = () => {
         }
 
     
-    return <div>
+    return <div className=' h-screen'>
         <h1 className='font-bold text-xl ml-5'>Home</h1>
         <div className='grid grid-cols-2 gap-2 m-4 sm:grid-cols-3 md:grid-cols-4'>{elements}</div>
     </div>
