@@ -26,12 +26,8 @@ export const CategoryElement = (props) => {
 
   async function save() {
     setEdit(prevEdit => !prevEdit)
-    if(name == ""){
-      setName("category")
-    }
-
     const newFileds = {name: name, icon: icon, color: color}
-    await updateDoc(thisDoc, newFileds)
+      await updateDoc(thisDoc, newFileds)
   }
 
   const icons = []

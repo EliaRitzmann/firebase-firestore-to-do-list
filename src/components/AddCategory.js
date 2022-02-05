@@ -7,7 +7,7 @@ import { useAuth } from '../contexts/FirebaseContext';
 
 export const AddCategory = () => {
     const [showModal, setShowModal] = useState(false);
-    const [name, setName] = useState("new category");
+    const [name, setName] = useState("");
     const [icon, setIcon] = useState("folder")
     const [color, setColor] = useState("black")
 
