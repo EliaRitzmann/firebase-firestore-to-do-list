@@ -29,6 +29,8 @@ export const HomePanel = (props) => {
   }
 }
 
+
+
 function open(){
   localStorage.setItem("categoryName", props.name)
   navigate(props.link)
