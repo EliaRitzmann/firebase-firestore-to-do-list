@@ -59,7 +59,7 @@ export const AddCategory = () => {
                         </button>
                     </div>
                     <div>
-                        <div className='grid grid-cols-6 gap-2 p-2 sm:grid-cols-12'>
+                        <div className='grid grid-cols-6 gap-2 p-2 sm:grid-cols-9'>
                         {icons}
                         </div>
 
