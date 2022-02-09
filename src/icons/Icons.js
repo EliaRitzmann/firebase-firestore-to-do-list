@@ -15,7 +15,7 @@ function getcolor(color, size) {
             return "h-6 w-6 text-green-500"
         case "small-teal":
             return "h-6 w-6 text-teal-500"
-        case "smail-violet":
+        case "small-violet":
             return "h-6 w-6 text-violet-500"
         case "small-pink":
             return "h-6 w-6 text-pink-500"
