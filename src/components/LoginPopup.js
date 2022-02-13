@@ -1,7 +1,9 @@
 import React from 'react';
 
+//Navigation
 import { useNavigate } from 'react-router-dom';
 
+//Auth
 import { useAuth} from '../contexts/FirebaseContext';
 
 

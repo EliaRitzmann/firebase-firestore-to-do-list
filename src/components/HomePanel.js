@@ -1,5 +1,7 @@
 import React from 'react';
 import { getIcons } from '../icons/Icons';
+
+//Navigation
 import { useNavigate } from 'react-router-dom';
 
 export const HomePanel = (props) => {
