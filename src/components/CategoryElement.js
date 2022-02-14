@@ -71,7 +71,7 @@ export const CategoryElement = (props) => {
           </svg>
         </button>
         {showModal && <div className='bg-black bg-opacity-50 absolute inset-0 w-screen flex justify-center items-center'>
-          <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl w-1/2">
+          <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-auto h-1/3 shadow-xl w-1/2">
             <div className='bg-gray-200 flex items-center justify-end'>
               <button onClick={a => setShowModal(false)}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
