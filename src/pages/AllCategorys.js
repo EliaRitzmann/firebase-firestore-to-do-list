@@ -40,6 +40,9 @@ export const AllCategorys = () => {
 
         const elements = [];
 
+        console.log(items)
+        console.log(category)   
+
         for(var i = 0; i < items.length; i++){
             for(var j = 0; j < category.length; j++){
                 if(items[i].categoryName == category[j].name){
