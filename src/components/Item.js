@@ -80,7 +80,7 @@ export const Item = (props) => {
             maxLength={120}
             placeholder="update"
             value={text}
-            className="w-full mr-2 p-1 bg-white h-6 rounded text-lg"
+            className="w-full mr-2 bg-white h-6 rounded text-lg"
           />
         </div>
 

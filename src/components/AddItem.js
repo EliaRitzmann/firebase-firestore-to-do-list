@@ -43,7 +43,7 @@ export const AddItem = (props) => {
             type="text"
             maxLength={120}
             placeholder="new task"
-            className="w-full mr-2 p-1 bg-white h-6 rounded text-lg"
+            className="w-full mr-2 bg-white h-6 rounded text-lg"
           />
         </div>
         
