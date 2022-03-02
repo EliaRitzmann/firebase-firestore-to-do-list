@@ -14,6 +14,7 @@ import {
 import { firestore } from "../api/firebase";
 import { Item } from "../components/Item";
 import { useNavigate } from "react-router-dom";
+import { AddItem } from "../components/AddItem";
 
 export const Category = () => {
   const navigate = useNavigate();
@@ -61,15 +62,16 @@ export const Category = () => {
 
   return (
     <div className="h-screen">
-      <h1 className="font-bold text-xl ml-5">
+      <h1 className="font-bold text-xl ml-5 mb-1">
         {localStorage.getItem("categoryName")}
       </h1>
-      <div className="flex flex-col items-center">
-        <div className="flex flex-col items-center"></div>
+      <div className="flex flex-col items-center gap-2">
         {elements}
 
+        <AddItem categoryName={localStorage.getItem("categoryName")}></AddItem>
+
         <button
-          className="bg-red-600 hover:bg-red-700 text-white font-bold rounded py-2 px-4"
+          className="bg-red-600 hover:bg-red-700 text-white font-bold rounded py-2 px-4 mt-1"
           onClick={deleteCategory}
         >
           delete category
