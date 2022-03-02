@@ -17,6 +17,7 @@ export const AddCategory = () => {
 
     async function add() {
         await addDoc(colRef, { name: name, icon: icon, color: color, userId: user.uid })
+        
     }
 
     const icons = []

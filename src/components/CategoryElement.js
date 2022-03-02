@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { getIcons, iconName, colorName } from '../icons/Icons';
 import { useNavigate } from 'react-router-dom';
-import { doc, updateDoc, deleteDoc } from 'firebase/firestore';
+import { doc, updateDoc} from 'firebase/firestore';
 import { firestore } from '../api/firebase';
 
 export const CategoryElement = (props) => {
@@ -16,7 +16,9 @@ export const CategoryElement = (props) => {
 
   function open() {
     localStorage.setItem("categoryName", props.item.name)
+    localStorage.setItem("categoryId", props.item.id)
     navigate("/category")
+    window.location.reload(false)
   }
 
   function toggleedit() {
@@ -25,14 +27,9 @@ export const CategoryElement = (props) => {
 
 
   async function save() {
-    setIsExtended(prevIsExtended => ! prevIsExtended)
     setEdit(prevEdit => !prevEdit)
     const newFileds = {name: name, icon: icon, color: color}
       await updateDoc(thisDoc, newFileds)
-  }
-
-  async function deleteCategory(){
-    await deleteDoc(thisDoc)
   }
 
   const icons = []
