@@ -1,58 +1,100 @@
-import React, { useEffect, useState } from 'react';
-
+import React, { useEffect, useState } from "react";
 //Firebase Auth
-import { useAuth } from '../contexts/FirebaseContext';
+import { useAuth } from "../contexts/FirebaseContext";
 //Firestore
 import {
-    collection, query, where,
-    doc, addDoc, onSnapshot, orderBy
-} from 'firebase/firestore';
-import { firestore } from '../api/firebase';
-
-
+  collection,
+  query,
+  where,
+  doc,
+  onSnapshot,
+  deleteDoc,
+} from "firebase/firestore";
+import { firestore } from "../api/firebase";
+import { Item } from "../components/Item";
 
 export const AllCategorys = () => {
-    const { user } = useAuth()
+    const { user } = useAuth();
 
-    const [category, setCategory] = useState([]);
-    const [items, setItems] = useState([])
+  const [items, setItems] = useState([]);
+  const [doneItems, setDoneItems] = useState([]);
 
-    const categoryRef = query(collection(firestore, "category"), where("userId", "==", user.uid))
-    const itemsRef = query(collection(firestore, "items"), where("userId", "==", user.uid))
+  const toDoRef = query(
+    collection(firestore, "items"),
+    where("userId", "==", user.uid),
+    where("done", "==", false)
+  );
 
-    useEffect(() =>
-        onSnapshot(categoryRef, (snapshot) => {
-            setCategory([])
-            setCategory(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-        }
+  const doneRef = query(
+    collection(firestore, "items"),
+    where("userId", "==", user.uid),
+    where("done", "==", true)
+  );
 
-        ),
-        []);
+  useEffect(
+    () =>
+      onSnapshot(toDoRef, (snapshot) => {
+        setItems([]);
+        setItems(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      }),
+    []
+  );
+  useEffect(
+    () =>
+      onSnapshot(doneRef, (snapshot) => {
+        setDoneItems([]);
+        setDoneItems(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      }),
+    []
+  );
 
-    useEffect(() =>
-        onSnapshot(itemsRef, (snapshot) => {
-            setItems([])
-            setItems(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-        }
+  const elements = [];
+  if(items.length == 0){
+    elements.push(<h1 >You have done all tasks :)</h1>)
+  }
+  for (var i = 0; i < items.length; i++) {
+    elements.push(
+      <Item
+        text={items[i].text}
+        favourite={items[i].favourite}
+        done={items[i].done}
+        dueTo={items[i].dueTo}
+        createdAt={items[i].createdAt}
+        CategoryName={items[i].CategoryName}
+        id={items[i].id}
+        key={i}
+      ></Item>
+    );
+  }
 
-        ),
-        []);
+  const doneElements = [];
 
-        const elements = [];
+  if(doneItems.length == 0){
+    doneElements.push(<h1 >check some tasks</h1>)
+  }
+  for (var i = 0; i < doneItems.length; i++) {
+    doneElements.push(
+      <Item
+        text={doneItems[i].text}
+        favourite={doneItems[i].favourite}
+        done={doneItems[i].done}
+        dueTo={doneItems[i].dueTo}
+        createdAt={doneItems[i].createdAt}
+        CategoryName={doneItems[i].CategoryName}
+        id={doneItems[i].id}
+        key={i}
+      ></Item>
+    );
+  }
 
-        console.log(items)
-        console.log(category)   
-
-        for(var i = 0; i < items.length; i++){
-            for(var j = 0; j < category.length; j++){
-                if(items[i].categoryName == category[j].name){
-                    elements.push(<h1>{items[i].text}{category[j].color}</h1>)
-                }else if(items[i].categoryName == "home"){
-                    elements.push(<h1>{items[i].text}</h1>)
-                }
-            }
-        }
-
-    
-    return <div>{elements}</div>;
+  return <div className="flex flex-col gap-1">
+    <h1 className='font-bold text-xl ml-5'>To do</h1>
+    <div className="flex flex-col items-center gap-2">
+        {elements}
+      </div>
+      <h1 className='font-bold text-xl ml-5'>Done</h1>
+    <div className="flex flex-col items-center gap-2">
+        {doneElements}
+      </div>
+  </div>;
 };
