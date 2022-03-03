@@ -43,6 +43,7 @@ export const Category = () => {
     elements.push(
       <Item
         text={items[i].text}
+        favourite={items[i].favourite}
         done={items[i].done}
         dueTo={items[i].dueTo}
         createdAt={items[i].createdAt}
