@@ -31,6 +31,12 @@ export const Item = (props) => {
     await updateDoc(thisDoc, newFileds);
   }
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      save()
+    }
+  }
+
   async function deleteItem() {
     await deleteDoc(thisDoc);
   }
@@ -126,6 +132,7 @@ export const Item = (props) => {
           />
           <input
             onChange={(event) => setText(event.target.value)}
+            onKeyDown={handleKeyDown}
             type="text"
             maxLength={120}
             placeholder="update"

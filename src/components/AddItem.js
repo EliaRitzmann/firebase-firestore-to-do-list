@@ -7,7 +7,7 @@ import { firestore } from "../api/firebase";
 import { useAuth } from "../contexts/FirebaseContext";
 
 export const AddItem = (props) => {
-  const [text, setText] = useState("new task");
+  const [text, setText] = useState("");
   const [done, setDone] = useState(false);
   const [dueTo, setDueTo] = useState("");
   const [createdAt, setCreatedAt] = useState(serverTimestamp());
@@ -27,7 +27,14 @@ export const AddItem = (props) => {
       dueTo: dueTo,
       createdAt: createdAt,
     });
+    setText("");
   }
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      save();
+    }
+  };
 
   async function toggleDone() {
     setDone((prevDone) => !prevDone);
@@ -44,7 +51,9 @@ export const AddItem = (props) => {
         />
         <input
           onChange={(event) => setText(event.target.value)}
+          onKeyDown={handleKeyDown}
           type="text"
+          value={text}
           maxLength={120}
           placeholder="new task"
           className="w-full mr-2 bg-white h-6 rounded text-lg"
