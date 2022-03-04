@@ -55,10 +55,13 @@ export const Category = () => {
   }
 
   async function deleteCategory() {
-    await deleteDoc(
-      doc(firestore, "category", localStorage.getItem("categoryId"))
-    );
-    navigate("/");
+    if(window.confirm("Do you really want to delete this category?")){
+      await deleteDoc(
+        doc(firestore, "category", localStorage.getItem("categoryId"))
+      );
+      navigate("/");
+    }
+    
   }
 
   return (
