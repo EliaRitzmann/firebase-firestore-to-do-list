@@ -66,7 +66,7 @@ export const CategoryElement = (props) => {
     return (
       <div className="flex flex-col justify-center gap-2 w-4/5 h-10 rounded-lg px-2 bg-white shadow shadow-gray-400 ">
         <div className="inline-flex items-center justify-between">
-          <div className="flex gap-2">
+          <div className="flex gap-2 ">
             <button onClick={(a) => setShowModal(true)}>
               {getIcons(icon, color, "small")}
             </button>
@@ -131,7 +131,7 @@ export const CategoryElement = (props) => {
   } else {
     return (
       <div className="inline-flex w-4/5 h-10 items-center justify-between rounded-lg px-2 bg-white shadow shadow-gray-400">
-        <div className="flex gap-2" onClick={open}>
+        <div className="flex gap-2 w-full" onClick={open}>
           {getIcons(icon, color, "small")}
           <span className="font-semibold">{name}</span>
         </div>
