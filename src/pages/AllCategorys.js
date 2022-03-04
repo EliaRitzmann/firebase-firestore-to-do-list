@@ -50,7 +50,7 @@ export const AllCategorys = () => {
 
   const elements = [];
   if(items.length == 0){
-    elements.push(<h1 >You have done all tasks :)</h1>)
+    elements.push(<h1 key={1}>You have done all tasks :)</h1>)
   }
   for (var i = 0; i < items.length; i++) {
     elements.push(
@@ -70,7 +70,7 @@ export const AllCategorys = () => {
   const doneElements = [];
 
   if(doneItems.length == 0){
-    doneElements.push(<h1 >check some tasks</h1>)
+    doneElements.push(<h1 key={1}>check some tasks</h1>)
   }
   for (var i = 0; i < doneItems.length; i++) {
     doneElements.push(

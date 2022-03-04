@@ -35,7 +35,7 @@ export const Favourites = () => {
 
   const elements = [];
   if(items.length == 0){
-    elements.push(<h1 >There are no favourites yet </h1>)
+    elements.push(<h1 key={1}>There are no favourites yet </h1>)
   }
   for (var i = 0; i < items.length; i++) {
     elements.push(

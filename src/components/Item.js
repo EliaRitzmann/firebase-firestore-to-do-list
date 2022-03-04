@@ -97,7 +97,7 @@ export const Item = (props) => {
             checked={done}
             onChange={toggleDone}
           />
-          <div className="mr-2 text-lg">{text}</div>
+          <div className="mr-2 text-lg w-64 sm:w-fit overflow-hidden">{text}</div>
         </div>
         <div className="flex items-center justify-end gap-1">
           {isfavourite()}
