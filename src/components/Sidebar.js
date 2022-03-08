@@ -1,13 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 
-//Firebase Auth
-import { useAuth } from '../contexts/FirebaseContext';
-//Firestore
-import {
-  collection, query, where,
-  onSnapshot
-} from 'firebase/firestore';
-import { firestore } from '../api/firebase';
+
 
 
 import { AddCategory } from './AddCategory';
@@ -16,30 +9,18 @@ import { getIcons } from '../icons/Icons';
 import { useNavigate } from 'react-router-dom';
 
 
+import { useDatabase } from '../contexts/FirestoreContext';
+
+
 export const Sidebar = () => {
   const navigate = useNavigate();
-  const { user } = useAuth()
 
-  const [category, setCategory] = useState([]);
+  const {categorys} = useDatabase()
   const elements = [];
 
-
-
-  const colRef = query(collection(firestore, "category"), where("userId", "==", user.uid))
-  for (var i = 0; i < category.length; i++) {
-    console.log(category[i])
-    elements.push(<CategoryElement item={category[i]} key={i}></CategoryElement>)
+  for (var i = 0; i < categorys.length; i++) {
+    elements.push(<CategoryElement item={categorys[i]} key={i}></CategoryElement>)
   }
-
-
-  useEffect(() =>
-    onSnapshot(colRef, (snapshot) => {
-      setCategory([])
-      setCategory(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-    }
-
-    ),
-    []);
 
     function btn_home(){
       navigate("/")

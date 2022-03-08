@@ -12,41 +12,34 @@ import {
 } from "firebase/firestore";
 import { firestore } from "../api/firebase";
 import { Item } from "../components/Item";
+import { useDatabase } from "../contexts/FirestoreContext";
 
 export const Favourites = () => {
-  const { user } = useAuth();
+  
+  const {items} = useDatabase()
 
-  const [items, setItems] = useState([]);
+  const favourteItems = [];
 
-  const itemsRef = query(
-    collection(firestore, "items"),
-    where("userId", "==", user.uid),
-    where("favourite", "==", true)
-  );
-
-  useEffect(
-    () =>
-      onSnapshot(itemsRef, (snapshot) => {
-        setItems([]);
-        setItems(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      }),
-    []
-  );
+  for(var i = 0; i  < items.length; i++){
+    if(items[i].favourite == true){
+      favourteItems.push(items[i])
+    }
+  }
 
   const elements = [];
-  if(items.length == 0){
+  if(favourteItems.length == 0){
     elements.push(<h1 key={1}>There are no favourites yet </h1>)
   }
-  for (var i = 0; i < items.length; i++) {
+  for (var i = 0; i < favourteItems.length; i++) {
     elements.push(
       <Item
-        text={items[i].text}
-        favourite={items[i].favourite}
-        done={items[i].done}
-        dueTo={items[i].dueTo}
-        createdAt={items[i].createdAt}
-        CategoryName={items[i].CategoryName}
-        id={items[i].id}
+        text={favourteItems[i].text}
+        favourite={favourteItems[i].favourite}
+        done={favourteItems[i].done}
+        dueTo={favourteItems[i].dueTo}
+        createdAt={favourteItems[i].createdAt}
+        CategoryName={favourteItems[i].CategoryName}
+        id={favourteItems[i].id}
         key={i}
       ></Item>
     );

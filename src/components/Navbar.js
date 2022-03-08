@@ -7,7 +7,6 @@ import { Sidebar } from "./Sidebar";
 export const Navbar = () => {
   //Firebase
   const { user, logOut } = useAuth();
-  console.log(user);
   function handleLogOut() {
     try {
       logOut();

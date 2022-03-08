@@ -1,67 +1,36 @@
-import React, { useEffect, useState } from "react";
-//Firebase Auth
-import { useAuth } from "../contexts/FirebaseContext";
-//Firestore
-import {
-  collection,
-  query,
-  where,
-  doc,
-  onSnapshot,
-  deleteDoc,
-} from "firebase/firestore";
-import { firestore } from "../api/firebase";
+import React from "react";
+
 import { Item } from "../components/Item";
+import { useDatabase } from "../contexts/FirestoreContext";
 
 export const AllCategorys = () => {
-    const { user } = useAuth();
+  const { items } = useDatabase();
 
-  const [items, setItems] = useState([]);
-  const [doneItems, setDoneItems] = useState([]);
+  const toDoItems = [];
+  const doneItems = [];
 
-  const toDoRef = query(
-    collection(firestore, "items"),
-    where("userId", "==", user.uid),
-    where("done", "==", false)
-  );
-
-  const doneRef = query(
-    collection(firestore, "items"),
-    where("userId", "==", user.uid),
-    where("done", "==", true)
-  );
-
-  useEffect(
-    () =>
-      onSnapshot(toDoRef, (snapshot) => {
-        setItems([]);
-        setItems(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      }),
-    []
-  );
-  useEffect(
-    () =>
-      onSnapshot(doneRef, (snapshot) => {
-        setDoneItems([]);
-        setDoneItems(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      }),
-    []
-  );
+  for (var i = 0; i < items.length; i++) {
+    if (items[i].done == true) {
+      doneItems.push(items[i]);
+    } else {
+      toDoItems.push(items[i]);
+    }
+  }
 
   const elements = [];
-  if(items.length == 0){
-    elements.push(<h1 key={1}>You have done all tasks :)</h1>)
+  if (toDoItems.length == 0) {
+    elements.push(<h1 key={1}>You have done all tasks :)</h1>);
   }
-  for (var i = 0; i < items.length; i++) {
+  for (var i = 0; i < toDoItems.length; i++) {
     elements.push(
       <Item
-        text={items[i].text}
-        favourite={items[i].favourite}
-        done={items[i].done}
-        dueTo={items[i].dueTo}
-        createdAt={items[i].createdAt}
-        CategoryName={items[i].CategoryName}
-        id={items[i].id}
+        text={toDoItems[i].text}
+        favourite={toDoItems[i].favourite}
+        done={toDoItems[i].done}
+        dueTo={toDoItems[i].dueTo}
+        createdAt={toDoItems[i].createdAt}
+        CategoryName={toDoItems[i].CategoryName}
+        id={toDoItems[i].id}
         key={i}
       ></Item>
     );
@@ -69,8 +38,8 @@ export const AllCategorys = () => {
 
   const doneElements = [];
 
-  if(doneItems.length == 0){
-    doneElements.push(<h1 key={1}>check some tasks</h1>)
+  if (doneItems.length == 0) {
+    doneElements.push(<h1 key={1}>check some tasks</h1>);
   }
   for (var i = 0; i < doneItems.length; i++) {
     doneElements.push(
@@ -87,14 +56,12 @@ export const AllCategorys = () => {
     );
   }
 
-  return <div className="flex flex-col gap-1">
-    <h1 className='font-bold text-xl ml-5'>To do</h1>
-    <div className="flex flex-col items-center gap-2">
-        {elements}
-      </div>
-      <h1 className='font-bold text-xl ml-5'>Done</h1>
-    <div className="flex flex-col items-center gap-2">
-        {doneElements}
-      </div>
-  </div>;
+  return (
+    <div className="flex flex-col gap-1">
+      <h1 className="font-bold text-xl ml-5">To do</h1>
+      <div className="flex flex-col items-center gap-2">{elements}</div>
+      <h1 className="font-bold text-xl ml-5">Done</h1>
+      <div className="flex flex-col items-center gap-2">{doneElements}</div>
+    </div>
+  );
 };

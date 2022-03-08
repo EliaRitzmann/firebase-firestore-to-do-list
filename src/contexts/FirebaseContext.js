@@ -38,7 +38,6 @@ export function UserAuthContextProvider({children}){
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)
             setLoading(false)
-            console.log(user)
         })
         return unsubscribe
     }, []);

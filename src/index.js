@@ -8,12 +8,15 @@ import { UserAuthContextProvider } from "./contexts/FirebaseContext";
 
 //Routing
 import { BrowserRouter as Router, Routes, Route, BrowserRouter, Link } from 'react-router-dom'
+import { DatabaseContextProvider } from './contexts/FirestoreContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserAuthContextProvider>
-        <App />
+        <DatabaseContextProvider>
+          <App />
+        </DatabaseContextProvider>
       </UserAuthContextProvider>
     </BrowserRouter>
   </React.StrictMode>,

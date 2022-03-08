@@ -1,54 +1,45 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-//Firebase Auth
-import { useAuth } from "../contexts/FirebaseContext";
 //Firestore
 import {
-  collection,
-  query,
-  where,
+  
   doc,
-  onSnapshot,
   deleteDoc,
 } from "firebase/firestore";
+
+
 import { firestore } from "../api/firebase";
 import { Item } from "../components/Item";
 import { useNavigate } from "react-router-dom";
 import { AddItem } from "../components/AddItem";
 
+import { useDatabase } from "../contexts/FirestoreContext";
+
 export const Category = () => {
   const navigate = useNavigate();
-  const { user } = useAuth();
 
-  const [items, setItems] = useState([]);
+  const {items} = useDatabase()
 
-  const itemsRef = query(
-    collection(firestore, "items"),
-    where("userId", "==", user.uid),
-    where("categoryName", "==", localStorage.getItem("categoryName"))
-  );
+  const specificItems = [];
 
-  useEffect(
-    () =>
-      onSnapshot(itemsRef, (snapshot) => {
-        setItems([]);
-        setItems(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      }),
-    []
-  );
+  for(var i = 0; i < items.length; i++){
+    if(items[i].categoryName == localStorage.getItem("categoryName")){
+      specificItems.push(items[i])
+    }
+  }
 
   const elements = [];
 
-  for (var i = 0; i < items.length; i++) {
+  for (var i = 0; i < specificItems.length; i++) {
     elements.push(
       <Item
-        text={items[i].text}
-        favourite={items[i].favourite}
-        done={items[i].done}
-        dueTo={items[i].dueTo}
-        createdAt={items[i].createdAt}
-        CategoryName={items[i].CategoryName}
-        id={items[i].id}
+        text={specificItems[i].text}
+        favourite={specificItems[i].favourite}
+        done={specificItems[i].done}
+        dueTo={specificItems[i].dueTo}
+        createdAt={specificItems[i].createdAt}
+        CategoryName={specificItems[i].CategoryName}
+        id={specificItems[i].id}
         key={i}
       ></Item>
     );
