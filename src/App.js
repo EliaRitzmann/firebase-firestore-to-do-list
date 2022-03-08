@@ -19,7 +19,7 @@ function App() {
 
   
   if(user){
-    return(<div>
+    return(<div >
       <link rel="manifest" href="/public/site.webmanifest"></link>
     <Navbar></Navbar>
     <Routes>

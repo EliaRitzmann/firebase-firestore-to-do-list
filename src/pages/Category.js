@@ -56,7 +56,7 @@ export const Category = () => {
   }
 
   return (
-    <div className="h-screen">
+    <div>
       <h1 className="font-bold text-xl ml-5 mb-1">
         {localStorage.getItem("categoryName")}
       </h1>
