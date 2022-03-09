@@ -1,22 +1,12 @@
 import React from "react";
 
-//Firestore
-import {
-  
-  doc,
-  deleteDoc,
-} from "firebase/firestore";
-
-
-import { firestore } from "../api/firebase";
 import { Item } from "../components/Item";
-import { useNavigate } from "react-router-dom";
 import { AddItem } from "../components/AddItem";
 
 import { useDatabase } from "../contexts/FirestoreContext";
+import { DeleteCategoryButton } from "../components/DeleteCategoryButton";
 
 export const Category = () => {
-  const navigate = useNavigate();
 
   const {items} = useDatabase()
 
@@ -45,16 +35,6 @@ export const Category = () => {
     );
   }
 
-  async function deleteCategory() {
-    if(window.confirm("Do you really want to delete this category?")){
-      await deleteDoc(
-        doc(firestore, "category", localStorage.getItem("categoryId"))
-      );
-      navigate("/");
-    }
-    
-  }
-
   return (
     <div>
       <h1 className="font-bold text-xl ml-5 mb-1">
@@ -65,12 +45,9 @@ export const Category = () => {
 
         <AddItem categoryName={localStorage.getItem("categoryName")}></AddItem>
 
-        <button
-          className="bg-red-600 hover:bg-red-700 text-white font-bold rounded py-2 px-4 mt-1"
-          onClick={deleteCategory}
-        >
-          delete category
-        </button>
+        <DeleteCategoryButton>
+
+        </DeleteCategoryButton>
       </div>
     </div>
   );

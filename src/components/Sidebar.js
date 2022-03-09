@@ -13,7 +13,7 @@ import { useDatabase } from '../contexts/FirestoreContext';
 
 
 export const Sidebar = (props) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const {categorys} = useDatabase()
   const elements = [];
