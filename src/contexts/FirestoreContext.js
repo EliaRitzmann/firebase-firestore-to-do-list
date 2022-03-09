@@ -32,7 +32,7 @@ export const DatabaseContextProvider = ({children}) => {
     }
     ),
     []);
-
+    
     //Items
     const toDoRef = query(
         collection(firestore, "items"),

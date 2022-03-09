@@ -1,19 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Item } from "../components/Item";
 import { AddItem } from "../components/AddItem";
 
 import { useDatabase } from "../contexts/FirestoreContext";
 import { DeleteCategoryButton } from "../components/DeleteCategoryButton";
+import { useCategory } from "../contexts/CategoryContext";
+
 
 export const Category = () => {
-
+  
   const {items} = useDatabase()
+  const {categoryName, categoryId} = useCategory()
+  
+  useEffect(() => {
+    
+  
+  }, [])
+  
 
   const specificItems = [];
 
   for(var i = 0; i < items.length; i++){
-    if(items[i].categoryName == localStorage.getItem("categoryName")){
+    if(items[i].categoryId == categoryId){
       specificItems.push(items[i])
     }
   }
@@ -28,7 +37,6 @@ export const Category = () => {
         done={specificItems[i].done}
         dueTo={specificItems[i].dueTo}
         createdAt={specificItems[i].createdAt}
-        CategoryName={specificItems[i].CategoryName}
         id={specificItems[i].id}
         key={i}
       ></Item>
@@ -38,12 +46,12 @@ export const Category = () => {
   return (
     <div>
       <h1 className="font-bold text-xl ml-5 mb-1">
-        {localStorage.getItem("categoryName")}
+        {categoryName}
       </h1>
       <div className="flex flex-col items-center gap-2">
         {elements}
 
-        <AddItem categoryName={localStorage.getItem("categoryName")}></AddItem>
+        <AddItem categoryId={categoryId}></AddItem>
 
         <DeleteCategoryButton>
 

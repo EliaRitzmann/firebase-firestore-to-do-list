@@ -3,20 +3,23 @@ import { getIcons, iconName, colorName } from "../icons/Icons";
 import { useNavigate } from "react-router-dom";
 import { doc, updateDoc } from "firebase/firestore";
 import { firestore } from "../api/firebase";
+import { useCategory } from "../contexts/CategoryContext";
 
 export const CategoryElement = (props) => {
   const navigate = useNavigate();
   const [edit, setEdit] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [name, setName] = useState(props.item.name);
-  const [icon, setIcon] = useState(props.item.icon);
-  const [color, setColor] = useState(props.item.color);
+  const [name, setName] = useState(props.category.name);
+  const [icon, setIcon] = useState(props.category.icon);
+  const [color, setColor] = useState(props.category.color);
 
-  const thisDoc = doc(firestore, "category", props.item.id);
+  const {changeCategoryName, changeCategoryId} = useCategory()
+
+  const thisDoc = doc(firestore, "category", props.category.id);
 
   function open() {
-    localStorage.setItem("categoryName", props.item.name);
-    localStorage.setItem("categoryId", props.item.id);
+    changeCategoryName(props.category.name)
+    changeCategoryId(props.category.id)
     navigate("/category");
     props.showSidebar()
   }

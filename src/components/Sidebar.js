@@ -19,7 +19,7 @@ export const Sidebar = (props) => {
   const elements = [];
 
   for (var i = 0; i < categorys.length; i++) {
-    elements.push(<CategoryElement item={categorys[i]} key={i} showSidebar={props.showSidebar}></CategoryElement>)
+    elements.push(<CategoryElement category={categorys[i]} key={i} showSidebar={props.showSidebar}></CategoryElement>)
   }
 
     function btn_home(){

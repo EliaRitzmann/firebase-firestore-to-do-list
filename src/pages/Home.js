@@ -16,7 +16,7 @@ export const Home = () => {
         elements.push(<HomePanel itemCount={favouriteCount} name="Favourites" color="red" icon="heart" key="0" link={"/favourites"}/>)
 
         for(var i = 0; i < categorys.length; i++){
-            elements.push(<HomePanel itemCount="69" name={categorys[i].name} color={categorys[i].color} icon={categorys[i].icon} link={"/category"} key={i + 1}/>)
+            elements.push(<HomePanel itemCount="69" name={categorys[i].name} id={categorys[i].id} color={categorys[i].color} icon={categorys[i].icon} link={"/category"} key={i + 1}/>)
         }
 
     

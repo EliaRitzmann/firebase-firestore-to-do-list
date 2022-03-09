@@ -29,7 +29,6 @@ export const AllCategorys = () => {
         done={toDoItems[i].done}
         dueTo={toDoItems[i].dueTo}
         createdAt={toDoItems[i].createdAt}
-        CategoryName={toDoItems[i].CategoryName}
         id={toDoItems[i].id}
         key={i}
       ></Item>

@@ -38,7 +38,6 @@ export const Favourites = () => {
         done={favourteItems[i].done}
         dueTo={favourteItems[i].dueTo}
         createdAt={favourteItems[i].createdAt}
-        CategoryName={favourteItems[i].CategoryName}
         id={favourteItems[i].id}
         key={i}
       ></Item>

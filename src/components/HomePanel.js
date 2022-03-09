@@ -3,9 +3,11 @@ import { getIcons } from '../icons/Icons';
 
 //Navigation
 import { useNavigate } from 'react-router-dom';
+import { useCategory } from '../contexts/CategoryContext';
 
 export const HomePanel = (props) => {
   const navigate = useNavigate();
+  const {changeCategoryName, changeCategoryId} = useCategory()
 
   function color(color){
     var out = "bg-gradient-to-br h-32 rounded-xl shadow shadow-slate-400"
@@ -34,7 +36,8 @@ export const HomePanel = (props) => {
 
 
 function open(){
-  localStorage.setItem("categoryName", props.name)
+  changeCategoryName(props.name)
+  changeCategoryId(props.id)
   navigate(props.link)
 }
 
