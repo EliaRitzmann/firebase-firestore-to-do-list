@@ -12,26 +12,29 @@ import { useNavigate } from 'react-router-dom';
 import { useDatabase } from '../contexts/FirestoreContext';
 
 
-export const Sidebar = () => {
+export const Sidebar = (props) => {
   const navigate = useNavigate();
 
   const {categorys} = useDatabase()
   const elements = [];
 
   for (var i = 0; i < categorys.length; i++) {
-    elements.push(<CategoryElement item={categorys[i]} key={i}></CategoryElement>)
+    elements.push(<CategoryElement item={categorys[i]} key={i} showSidebar={props.showSidebar}></CategoryElement>)
   }
 
     function btn_home(){
       navigate("/")
+      props.showSidebar()
     }
 
     function btn_fav(){
       navigate("/favourites")
+      props.showSidebar()
     }
 
     function btn_all(){
       navigate("/all")
+      props.showSidebar()
     }
 
   return <div className='flex flex-col items-center gap-2'>

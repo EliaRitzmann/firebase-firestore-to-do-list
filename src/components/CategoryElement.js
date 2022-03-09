@@ -18,7 +18,7 @@ export const CategoryElement = (props) => {
     localStorage.setItem("categoryName", props.item.name);
     localStorage.setItem("categoryId", props.item.id);
     navigate("/category");
-    window.location.reload(false);
+    props.showSidebar()
   }
 
   function toggleedit() {

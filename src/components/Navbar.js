@@ -131,7 +131,7 @@ export const Navbar = () => {
               </svg>
             </button>
           </div>
-          <Sidebar></Sidebar>
+          <Sidebar showSidebar={showSidebar}></Sidebar>
         </div>
       </div>
     </nav>
