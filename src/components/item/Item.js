@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 
-import { firestore } from "../api/firebase";
+import { firestore } from "../../api/firebase";
 
 export const Item = (props) => {
   const thisDoc = doc(firestore, "items", props.id);
@@ -89,7 +89,7 @@ export const Item = (props) => {
 
   if (!edit) {
     return (
-      <div className="bg-slate-300 w-full p-2 rounded-lg flex items-center justify-between shadow-lg h-11">
+      <div className="bg-white w-full p-2 rounded-lg flex items-center justify-between h-11">
         <div className="flex items-center gap-1">
           <input
             type="checkbox"

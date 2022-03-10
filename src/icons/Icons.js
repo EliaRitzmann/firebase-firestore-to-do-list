@@ -6,7 +6,7 @@ function getcolor(color, size) {
         case "small-black":
             return "h-6 w-6"
         case "small-red":
-            return "h-6 w-6 text-red-400"
+            return "h-6 w-6 text-red-500"
         case "small-sky":
             return "h-6 w-6 text-sky-500"
         case "small-lime":

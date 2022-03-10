@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { getIcons, iconName, colorName } from "../icons/Icons";
+import { getIcons, iconName, colorName } from "../../icons/Icons";
 import { useNavigate } from "react-router-dom";
 import { doc, updateDoc } from "firebase/firestore";
-import { firestore } from "../api/firebase";
-import { useCategory } from "../contexts/CategoryContext";
+import { firestore } from "../../api/firebase";
+import { useCategory } from "../../contexts/CategoryContext";
 
 export const CategoryElement = (props) => {
   const navigate = useNavigate();

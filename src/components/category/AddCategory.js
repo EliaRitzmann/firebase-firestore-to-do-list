@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { getIcons, iconName, colorName } from "../icons/Icons";
+import { getIcons, iconName, colorName } from "../../icons/Icons";
 
-import { firestore } from "../api/firebase";
+import { firestore } from "../../api/firebase";
 import { addDoc, collection } from "firebase/firestore";
-import { useAuth } from "../contexts/FirebaseContext";
+import { useAuth } from "../../contexts/FirebaseContext";
 
 export const AddCategory = () => {
   const [showModal, setShowModal] = useState(false);

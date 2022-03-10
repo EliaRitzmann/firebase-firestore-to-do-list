@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
-import { firestore } from "../api/firebase";
+import { firestore } from "../../api/firebase";
 
-import { useAuth } from "../contexts/FirebaseContext";
+import { useAuth } from "../../contexts/FirebaseContext";
 
 export const AddItem = (props) => {
   const [text, setText] = useState("");

@@ -6,9 +6,9 @@ import {
   doc,
   deleteDoc,
 } from "firebase/firestore";
-import { firestore } from "../api/firebase";
+import { firestore } from "../../api/firebase";
 import { useNavigate } from 'react-router-dom';
-import { useDatabase } from '../contexts/FirestoreContext';
+import { useDatabase } from '../../contexts/FirestoreContext';
 
 
 

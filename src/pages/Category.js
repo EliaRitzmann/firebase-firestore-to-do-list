@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 
-import { Item } from "../components/Item";
-import { AddItem } from "../components/AddItem";
+import { Item2 } from "../components/item/Item2";
+import { AddItem } from "../components/item/AddItem";
 
 import { useDatabase } from "../contexts/FirestoreContext";
-import { DeleteCategoryButton } from "../components/DeleteCategoryButton";
+import { DeleteCategoryButton } from "../components/category/DeleteCategoryButton";
 import { useCategory } from "../contexts/CategoryContext";
 import { useNavigate } from "react-router-dom";
+import { ItemWrapper } from "../components/item/ItemWrapper";
 
 export const Category = () => {
   const navigate = useNavigate();
@@ -26,8 +27,8 @@ export const Category = () => {
 
   const elements = [];
   for (var i = 0; i < specificItems.length; i++) {
-    elements.push(
-      <Item
+    elements.push(<ItemWrapper>
+        <Item2
         text={specificItems[i].text}
         favourite={specificItems[i].favourite}
         done={specificItems[i].done}
@@ -36,7 +37,9 @@ export const Category = () => {
         categoryId={specificItems[i].categoryId}
         id={specificItems[i].id}
         key={i}
-      ></Item>
+      ></Item2>
+    </ItemWrapper>
+      
     );
   }
 

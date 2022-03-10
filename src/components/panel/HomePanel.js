@@ -1,9 +1,9 @@
 import React from 'react';
-import { getIcons } from '../icons/Icons';
+import { getIcons } from '../../icons/Icons';
 
 //Navigation
 import { useNavigate } from 'react-router-dom';
-import { useCategory } from '../contexts/CategoryContext';
+import { useCategory } from '../../contexts/CategoryContext';
 
 export const HomePanel = (props) => {
   const navigate = useNavigate();
@@ -48,3 +48,6 @@ function open(){
     </div>
   </div>;
 };
+
+
+

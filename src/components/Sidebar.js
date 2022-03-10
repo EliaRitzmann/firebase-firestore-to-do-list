@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import { AddCategory } from "./AddCategory";
-import { CategoryElement } from "./CategoryElement";
+import { AddCategory } from "./category/AddCategory";
+import { CategoryElement } from "./category/CategoryElement";
 import { getIcons } from "../icons/Icons";
 import { useNavigate } from "react-router-dom";
 

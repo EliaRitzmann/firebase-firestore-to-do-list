@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { HomePanel } from '../components/HomePanel';
+import { HomePanel } from '../components/panel/HomePanel';
 import { useDatabase } from '../contexts/FirestoreContext';
 
 export const Home = () => {
