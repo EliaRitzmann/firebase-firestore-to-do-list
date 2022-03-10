@@ -22,7 +22,7 @@ function App() {
   
   if(user){
     return(<DatabaseContextProvider><CategoryContextProvider>
-      <div >
+      <div className='h-screen'>
       <link rel="manifest" href="/public/site.webmanifest"></link>
     <Navbar></Navbar>
     <Routes>
