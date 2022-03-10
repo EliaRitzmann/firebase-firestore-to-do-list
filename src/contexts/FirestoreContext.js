@@ -20,7 +20,7 @@ export const DatabaseContextProvider = ({children}) => {
     const { user } = useAuth()
     const [categorys, setCategorys] = useState([])
     const [items, setItems] = useState([])
-
+    
     //category
     const colRef = query(collection(firestore, "category"), where("userId", "==", user.uid))
 

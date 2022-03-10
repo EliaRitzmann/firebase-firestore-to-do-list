@@ -12,6 +12,8 @@ import { Navbar } from './components/Navbar';
 import { useAuth } from './contexts/FirebaseContext';
 import { Favourites } from './pages/Favourites';
 import { AllCategorys } from './pages/AllCategorys';
+import { DatabaseContextProvider } from './contexts/FirestoreContext';
+import { CategoryContextProvider } from './contexts/CategoryContext';
 
 function App() {
   const {user} = useAuth()
@@ -19,7 +21,8 @@ function App() {
 
   
   if(user){
-    return(<div >
+    return(<DatabaseContextProvider><CategoryContextProvider>
+      <div >
       <link rel="manifest" href="/public/site.webmanifest"></link>
     <Navbar></Navbar>
     <Routes>
@@ -28,7 +31,9 @@ function App() {
       <Route path="/all" element={<AllCategorys></AllCategorys>} />
       <Route path="/favourites" element={<Favourites></Favourites>} />
     </Routes>
-    </div>)
+    </div>
+      </CategoryContextProvider></DatabaseContextProvider>
+    )
   }else{
     return(
       <LoginPopup></LoginPopup>

@@ -15,11 +15,7 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserAuthContextProvider>
-        <DatabaseContextProvider>
-          <CategoryContextProvider>
-            <App />
-          </CategoryContextProvider>
-        </DatabaseContextProvider>
+        <App/>
       </UserAuthContextProvider>
     </BrowserRouter>
   </React.StrictMode>,
