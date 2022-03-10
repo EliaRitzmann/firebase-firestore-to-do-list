@@ -17,11 +17,13 @@ export const CategoryElement = (props) => {
 
   const thisDoc = doc(firestore, "category", props.category.id);
 
-  function open() {
-    changeCategoryName(props.category.name)
-    changeCategoryId(props.category.id)
+  async function open() {
+    //reroute to rerender componnent (IMPORTANT)
+    await navigate("/")
+      changeCategoryId(props.category.id)
+      changeCategoryName(props.category.name)
+      props.showSidebar()
     navigate("/category");
-    props.showSidebar()
   }
 
   function toggleedit() {

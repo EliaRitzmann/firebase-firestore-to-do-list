@@ -44,6 +44,9 @@ export const Favourites = () => {
     );
   }
 
+  //sort done 
+  elements.sort((a, b) => a.props.done - b.props.done)
+  
   return <div>
     <h1 className='font-bold text-xl ml-5'>Favourites</h1>
     <div className="flex flex-col items-center gap-2">

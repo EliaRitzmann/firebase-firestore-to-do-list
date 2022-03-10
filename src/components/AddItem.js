@@ -11,7 +11,6 @@ export const AddItem = (props) => {
   const [done, setDone] = useState(false);
   const [dueTo, setDueTo] = useState("");
   const [createdAt, setCreatedAt] = useState(serverTimestamp());
-  const [categoryId, setCategoryId] = useState(props.categoryId);
 
   const { user } = useAuth();
 
@@ -23,7 +22,7 @@ export const AddItem = (props) => {
       text: text,
       favourite: false,
       done: done,
-      categoryId: categoryId,
+      categoryId: props.categoryId,
       dueTo: dueTo,
       createdAt: createdAt,
     });

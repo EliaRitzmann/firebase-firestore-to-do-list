@@ -9,14 +9,13 @@ import {
 import { firestore } from "../api/firebase";
 import { useNavigate } from 'react-router-dom';
 import { useDatabase } from '../contexts/FirestoreContext';
-import { useCategory } from '../contexts/CategoryContext';
 
 
 
-export const DeleteCategoryButton = () => {
+export const DeleteCategoryButton = (props) => {
   const navigate = useNavigate()
   const {items} = useDatabase()
-  const {categoryName, categoryId} = useCategory()
+  const categoryId = props.categoryId
 
   async function deleteCategory() {
     if(window.confirm("Do you really want to delete this category?")){

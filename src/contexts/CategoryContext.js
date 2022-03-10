@@ -1,14 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-//Firebase Auth
-import { useAuth } from '../contexts/FirebaseContext';
-//Firestore
-import {
-  collection, query, where,
-  onSnapshot
-} from 'firebase/firestore';
-import { firestore } from '../api/firebase';
-
 //Create Context
 const categoryContext = createContext();
 
@@ -21,6 +12,7 @@ export const CategoryContextProvider = ({children}) => {
     
     const [categoryName, setCategoryName] = useState()
     const [categoryId, setCategoryId] = useState()
+    
 
     function changeCategoryName(categoryName){
         setCategoryName(categoryName)
@@ -30,12 +22,15 @@ export const CategoryContextProvider = ({children}) => {
         setCategoryId(categoryId)
     }
 
+    
+    
+
 
     const value = {
-        categoryName,
         categoryId,
-        changeCategoryName,
-        changeCategoryId
+        categoryName,
+        changeCategoryId,
+        changeCategoryName
     }
 
 

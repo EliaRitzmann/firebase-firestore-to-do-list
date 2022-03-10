@@ -5,7 +5,7 @@ import { useDatabase } from "../contexts/FirestoreContext";
 
 export const AllCategorys = () => {
   const { items } = useDatabase();
-
+  
   const toDoItems = [];
   const doneItems = [];
 

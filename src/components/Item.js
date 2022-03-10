@@ -13,7 +13,10 @@ export const Item = (props) => {
   const [dueTo, setDueTo] = useState(props.dueTo);
   const [createdAt, setCreatedAt] = useState(props.createdAt);
   const [favourite, setfavourite] = useState(props.favourite);
-
+  const [categoryId, setCategoryId] = useState(props.categoryId);
+  
+  console.log(categoryId)
+  
   function toggleedit() {
     setEdit((prevEdit) => !prevEdit);
   }
