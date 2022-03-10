@@ -43,7 +43,7 @@ export const Category = () => {
   //sort done
   elements.sort((a, b) => a.props.done - b.props.done);
   return (
-    <div className="mx-5">
+    <div className="mx-5 h-screen">
       <div className="flex justify-between items-center mb-2">
         <div className="flex items-center">
           <h1 className="font-bold text-2xl">{categoryName}</h1>

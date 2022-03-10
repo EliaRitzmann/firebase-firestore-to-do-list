@@ -56,7 +56,7 @@ export const AllCategorys = () => {
   }
 
   return (
-    <div className="mx-5">
+    <div className="mx-5 h-screen">
       <div className="flex justify-between items-center mb-2">
         <div className="flex items-center">
           <h1 className="font-bold text-2xl">All</h1>
