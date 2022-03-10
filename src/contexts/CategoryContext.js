@@ -22,9 +22,6 @@ export const CategoryContextProvider = ({children}) => {
         setCategoryId(categoryId)
     }
 
-    
-    
-
 
     const value = {
         categoryId,

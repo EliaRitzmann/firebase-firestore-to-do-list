@@ -102,7 +102,7 @@ export const Navbar = () => {
       <div>
         <button className={
             sidebar
-              ? "h-full w-full  fixed"
+              ? "h-full w-full fixed"
               : "left-full fixed"
           } onClick={showSidebar}>.</button>
         <div

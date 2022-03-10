@@ -13,49 +13,50 @@ export const Category = () => {
   const { items } = useDatabase();
   const { categoryName, categoryId } = useCategory();
 
-
   if (categoryId == null) {
     navigate("/");
   }
-  console.log(categoryName);
-  console.log(categoryId);
 
   const specificItems = [];
-      for (var i = 0; i < items.length; i++) {
-        if (items[i].categoryId == categoryId) {
-          specificItems.push(items[i]);
-        }
-      }
-  
-      const elements = [];
-      for (var i = 0; i < specificItems.length; i++) {
-        elements.push(
-          <Item
-            text={specificItems[i].text}
-            favourite={specificItems[i].favourite}
-            done={specificItems[i].done}
-            dueTo={specificItems[i].dueTo}
-            createdAt={specificItems[i].createdAt}
-            categoryId={specificItems[i].categoryId}
-            id={specificItems[i].id}
-            key={i}
-          ></Item>
-        );
-      }
-  
-      
-      
-      //sort done 
-      elements.sort((a, b) => a.props.done - b.props.done)
+  for (var i = 0; i < items.length; i++) {
+    if (items[i].categoryId == categoryId) {
+      specificItems.push(items[i]);
+    }
+  }
+
+  const elements = [];
+  for (var i = 0; i < specificItems.length; i++) {
+    elements.push(
+      <Item
+        text={specificItems[i].text}
+        favourite={specificItems[i].favourite}
+        done={specificItems[i].done}
+        dueTo={specificItems[i].dueTo}
+        createdAt={specificItems[i].createdAt}
+        categoryId={specificItems[i].categoryId}
+        id={specificItems[i].id}
+        key={i}
+      ></Item>
+    );
+  }
+
+  //sort done
+  elements.sort((a, b) => a.props.done - b.props.done);
   return (
-    <div>
-      <h1 className="font-bold text-xl ml-5 mb-1">{categoryName}</h1>
+    <div className="mx-5">
+      <div className="flex justify-between items-center mb-2">
+        <div className="flex items-center">
+          <h1 className="font-bold text-2xl">{categoryName}</h1>
+        </div>
+        
+      </div>
+
       <div className="flex flex-col items-center gap-2">
         {elements}
 
         <AddItem categoryId={categoryId}></AddItem>
 
-        <DeleteCategoryButton></DeleteCategoryButton>
+        <DeleteCategoryButton categoryId={categoryId}></DeleteCategoryButton>
       </div>
     </div>
   );

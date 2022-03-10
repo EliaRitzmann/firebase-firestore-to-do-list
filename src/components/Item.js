@@ -15,8 +15,6 @@ export const Item = (props) => {
   const [favourite, setfavourite] = useState(props.favourite);
   const [categoryId, setCategoryId] = useState(props.categoryId);
   
-  console.log(categoryId)
-  
   function toggleedit() {
     setEdit((prevEdit) => !prevEdit);
   }
@@ -91,7 +89,7 @@ export const Item = (props) => {
 
   if (!edit) {
     return (
-      <div className="bg-slate-300 w-11/12 p-2 rounded-lg flex items-center justify-between shadow-lg">
+      <div className="bg-slate-300 w-full p-2 rounded-lg flex items-center justify-between shadow-lg h-11">
         <div className="flex items-center gap-1">
           <input
             type="checkbox"
@@ -124,11 +122,11 @@ export const Item = (props) => {
     );
   } else {
     return (
-      <div className="bg-slate-300 w-11/12 p-2 rounded-lg flex items-center justify-between shadow-lg">
-        <div className="flex items-center gap-1  w-full">
+      <div className="bg-slate-300 w-full p-2 rounded-lg flex items-center justify-between shadow-lg h-11">
+        <div className="flex items-center gap-1 w-full">
           <input
             type="checkbox"
-            className="h-5 w-5 text-green-600"
+            className="h-5 w-5"
             checked={done}
             onChange={toggleDone}
           />

@@ -56,10 +56,15 @@ export const AllCategorys = () => {
   }
 
   return (
-    <div className="flex flex-col gap-1">
-      <h1 className="font-bold text-xl ml-5">To do</h1>
+    <div className="mx-5">
+      <div className="flex justify-between items-center mb-2">
+        <div className="flex items-center">
+          <h1 className="font-bold text-2xl">All</h1>
+        </div>
+        </div>
+      
       <div className="flex flex-col items-center gap-2">{elements}</div>
-      <h1 className="font-bold text-xl ml-5">Done</h1>
+      <h1 className="font-bold text-2xl ">Done</h1>
       <div className="flex flex-col items-center gap-2">{doneElements}</div>
     </div>
   );

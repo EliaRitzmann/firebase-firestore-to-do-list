@@ -40,7 +40,7 @@ export const AddItem = (props) => {
   }
 
   return (
-    <div className="bg-slate-300 w-11/12 p-2 rounded-lg flex items-center justify-between shadow-lg">
+    <div className="bg-slate-300 w-full p-2 rounded-lg flex items-center justify-between shadow-lg h-11">
       <div className="flex items-center gap-1 w-full">
         <input
           type="checkbox"
