@@ -45,22 +45,19 @@ export const Category = () => {
 
   //sort done
   elements.sort((a, b) => a.props.done - b.props.done);
-  return (<div>
-    <div className="mx-5">
-      <div className="flex justify-between items-center mb-2">
-        <div className="flex items-center">
-          <h1 className="font-bold text-2xl">{categoryName}</h1>
-          
-        </div>
-        
-      </div>
-      <div className="flex flex-col items-center gap-2">
-        {elements}
-
-      </div>
+  return (<div className="mx-5">
+  <div className="flex justify-between items-center mb-2">
+    <div className="flex items-center">
+      <h1 className="font-bold text-2xl">{categoryName}</h1>
+      
     </div>
-    <AddItem></AddItem>
+    
   </div>
+  <div className="flex flex-col items-center gap-2">
+    {elements}
+    <AddItem categoryId={categoryId}></AddItem>
+  </div>
+</div>
     
   );
 };

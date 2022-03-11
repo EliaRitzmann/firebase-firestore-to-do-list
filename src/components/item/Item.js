@@ -52,16 +52,15 @@ export const Item = (props) => {
 
   return (<ItemWrapper className="w-full">
     <div className="w-full">
-    <div className="flex items-center justify-between w-full h-7">
+    <div className="flex items-center justify-between w-full h-8">
       <input
         type="checkbox"
         checked={done}
         onChange={toggleDone}
-            
-            
+        
         className="w-6 h-6 text-lime-400 rounded-md focus:ring-0 focus:ring-offset-0 border-none bg-stone-200"
       />
-        <input className="w-full mx-2 focus:bg-stone-200 rounded-md border-transparent focus:border-transparent focus:ring-0 h-6 p-0.5" 
+        <input className="w-full mx-2 rounded-md border-transparent focus:border-transparent focus:ring-0 h-6 p-0.5" 
         type="text"
         onFocus={toggleEdit}
         onBlur={save}
@@ -71,7 +70,7 @@ export const Item = (props) => {
         maxLength={30}
         placeholder="task"
             ></input>
-        {edit ? <button className="bg-stone-200 h-6 px-0.5 rounded-md" onMouseDown={deleteItem}>delete</button> : <Heart itemId={props.id} isFavourite={props.favourite}/>}
+        {edit ? <button className="bg-stone-200 h-7 px-1 rounded-md" onMouseDown={deleteItem}>Delete</button> : <Heart itemId={props.id} isFavourite={props.favourite}/>}
         
     </div>
     {edit && <div className="flex justify-between ">
