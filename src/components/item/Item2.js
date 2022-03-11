@@ -4,6 +4,7 @@ import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 
 import { firestore } from "../../api/firebase";
 import { Heart } from "./Heart";
+import { ItemWrapper } from "./ItemWrapper";
 
 export const Item2 = (props) => {
   const thisDoc = doc(firestore, "items", props.id);
@@ -34,11 +35,15 @@ export const Item2 = (props) => {
 
   async function save() {
     setEdit(false)
-    const newFileds = { text: text, dueTo: dueTo };
-    await updateDoc(thisDoc, newFileds);
+    //only update databse when text has changed
+    if(text != props.text){
+      const newFileds = { text: text, dueTo: dueTo };
+      await updateDoc(thisDoc, newFileds);
+    }
+    
   }
 
-  return (<div className="w-full">
+  return (<ItemWrapper className="w-full">
       <div className="flex items-center justify-between w-full">
       <input
         type="checkbox"
@@ -67,7 +72,6 @@ export const Item2 = (props) => {
     <div className="bg-green-500">
         
     </div>
-  </div>
-    
+  </ItemWrapper>
   );
 };

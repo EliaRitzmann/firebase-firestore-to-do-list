@@ -27,7 +27,7 @@ export const Category = () => {
 
   const elements = [];
   for (var i = 0; i < specificItems.length; i++) {
-    elements.push(<ItemWrapper>
+    elements.push(
         <Item2
         text={specificItems[i].text}
         favourite={specificItems[i].favourite}
@@ -38,8 +38,7 @@ export const Category = () => {
         id={specificItems[i].id}
         key={i}
       ></Item2>
-    </ItemWrapper>
-      
+    
     );
   }
 
