@@ -5,6 +5,7 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { firestore } from "../../api/firebase";
 
 import { useAuth } from "../../contexts/FirebaseContext";
+import { ItemWrapper } from "./ItemWrapper";
 
 export const AddItem = (props) => {
   const [text, setText] = useState("");
@@ -40,43 +41,8 @@ export const AddItem = (props) => {
   }
 
   return (
-    <div className="bg-slate-300 w-full p-2 rounded-lg flex items-center justify-between shadow-lg h-11">
-      <div className="flex items-center gap-1 w-full">
-        <input
-          type="checkbox"
-          className="h-5 w-5 text-green-600"
-          checked={done}
-          onChange={toggleDone}
-        />
-        <input
-          onChange={(event) => setText(event.target.value)}
-          onKeyDown={handleKeyDown}
-          type="text"
-          value={text}
-          maxLength={120}
-          placeholder="new task"
-          className="w-full mr-2 bg-white h-6 rounded text-lg"
-        />
+    <div className="bg-white p-2 rounded-lg flex items-center justify-between min-h-11 absolute bottom-10 w-1/2 left-1/4 ">
+      <input className="" type={text}/>
       </div>
-
-      <div className="flex items-center">
-        <button onClick={save}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M5 13l4 4L19 7"
-            />
-          </svg>
-        </button>
-      </div>
-    </div>
   );
 };
