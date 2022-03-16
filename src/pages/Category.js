@@ -58,6 +58,7 @@ export const Category = () => {
   <div className="flex flex-col items-center gap-2">
     {elements}
     <AddItem categoryId={categoryObject?.id}></AddItem>
+    <DeleteCategoryButton categoryId={categoryObject?.id}></DeleteCategoryButton>
   </div>
 </div>
   );

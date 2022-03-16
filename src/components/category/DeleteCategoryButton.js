@@ -25,7 +25,6 @@ export const DeleteCategoryButton = (props) => {
 
       for(var i = 0; i < items.length; i++){
         if(items[i].categoryId == categoryId){
-          console.log(items[i].id)
           await deleteDoc(doc(firestore, "items", items[i].id))
         }
       }
