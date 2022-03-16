@@ -13,15 +13,14 @@ export const CategoryElement = (props) => {
   const [icon, setIcon] = useState(props.category.icon);
   const [color, setColor] = useState(props.category.color);
 
-  const {changeCategoryName, changeCategoryId} = useCategory()
+  const {changeCategoryObject} = useCategory()
 
   const thisDoc = doc(firestore, "category", props.category.id);
 
   async function open() {
     //reroute to rerender componnent (IMPORTANT)
     await navigate("/")
-      changeCategoryId(props.category.id)
-      changeCategoryName(props.category.name)
+      changeCategoryObject({name: name, id: props.category.id, icon: icon, color: color})
       props.showSidebar()
     navigate("/category");
   }

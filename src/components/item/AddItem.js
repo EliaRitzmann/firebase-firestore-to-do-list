@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-
 import { firestore } from "../../api/firebase";
-
 import { useAuth } from "../../contexts/FirebaseContext";
 
 export const AddItem = (props) => {
@@ -12,7 +9,6 @@ export const AddItem = (props) => {
   const [dueTo, setDueTo] = useState("");
   const [createdAt, setCreatedAt] = useState(serverTimestamp());
   const [focus, setFocus] = useState(false);
-
   const { user } = useAuth();
 
   const colRef = collection(firestore, "items");
@@ -86,7 +82,6 @@ export const AddItem = (props) => {
       </div>
       
       <h1 className="bg-stone-200 h-7 rounded-md px-1" onMouseDown={save}>Add</h1> </div>}
-      
     </div>
   );
 };

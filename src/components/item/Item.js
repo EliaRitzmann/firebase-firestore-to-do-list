@@ -5,6 +5,10 @@ import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { firestore } from "../../api/firebase";
 import { Heart } from "./Heart";
 import { ItemWrapper } from "./ItemWrapper";
+import { Category } from "../../pages/Category";
+import { useDatabase } from "../../contexts/FirestoreContext";
+
+
 
 export const Item = (props) => {
   const thisDoc = doc(firestore, "items", props.id);
@@ -12,9 +16,9 @@ export const Item = (props) => {
   const [edit, setEdit] = useState(false);
   const [text, setText] = useState(props.text);
   const [done, setDone] = useState(props.done);
-  const [dueTo, setDueTo] = useState(props.dueTo);
   const [createdAt, setCreatedAt] = useState(props.createdAt);
   const [categoryId, setCategoryId] = useState(props.categoryId);
+  const [categoryName, setCategoryName] = useState(props.categoryName);
 
   async function toggleDone() {
     setDone((prevDone) => !prevDone);
@@ -37,7 +41,7 @@ export const Item = (props) => {
     setEdit(false)
     //only update databse when text has changed
     if(text != props.text){
-      const newFileds = { text: text, dueTo: dueTo };
+      const newFileds = { text: text};
       await updateDoc(thisDoc, newFileds);
     }
   }
@@ -57,8 +61,7 @@ export const Item = (props) => {
         type="checkbox"
         checked={done}
         onChange={toggleDone}
-        
-        className="w-6 h-6 text-lime-400 rounded-md focus:ring-0 focus:ring-offset-0 border-none bg-stone-200"
+        className={"w-6 h-6 text-lime-400 rounded-md focus:ring-0 focus:ring-offset-0 border-none bg-stone-200"}
       />
         <input className="w-full mx-2 rounded-md border-transparent focus:border-transparent focus:ring-0 h-6 p-0.5" 
         type="text"
@@ -69,13 +72,13 @@ export const Item = (props) => {
         onChange={(event) => setText(event.target.value)}
         maxLength={30}
         placeholder="task"
-            ></input>
+        ></input>
         {edit ? <button className="bg-stone-200 h-7 px-1 rounded-md" onMouseDown={deleteItem}>Delete</button> : <Heart itemId={props.id} isFavourite={props.favourite}/>}
         
     </div>
     {edit && <div className="flex justify-between ">
         <h1 className="text-xs text-stone-300 font-semibold">created: {date.toISOString().split('T')[0]}</h1>
-        <h1 className="text-xs text-stone-300 font-semibold">due to:{dueTo}</h1>
+        {categoryName && <h1 className="text-xs text-stone-300 font-semibold">Category: {categoryName}</h1>}
     </div>}
     
     </div>

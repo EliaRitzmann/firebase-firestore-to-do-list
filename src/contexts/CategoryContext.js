@@ -10,24 +10,17 @@ export function useCategory(){
 export const CategoryContextProvider = ({children}) => {
     
     
-    const [categoryName, setCategoryName] = useState()
-    const [categoryId, setCategoryId] = useState()
+    const [categoryObject, setCategoryObject] = useState()
     
 
-    function changeCategoryName(categoryName){
-        setCategoryName(categoryName)
-    }
-
-    function changeCategoryId(categoryId){
-        setCategoryId(categoryId)
+    function changeCategoryObject(categoryObject){
+        setCategoryObject(categoryObject)
     }
 
 
     const value = {
-        categoryId,
-        categoryName,
-        changeCategoryId,
-        changeCategoryName
+        categoryObject,
+        changeCategoryObject
     }
 
 

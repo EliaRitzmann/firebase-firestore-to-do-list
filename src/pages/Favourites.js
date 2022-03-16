@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { UseGetCategory } from "../components/category/UseGetCategory";
 import { Item } from "../components/item/Item";
 import { useDatabase } from "../contexts/FirestoreContext";
 
@@ -19,13 +20,14 @@ export const Favourites = () => {
     elements.push(<h1 key={1}>There are no favourites yet </h1>)
   }
   for (var i = 0; i < favourteItems.length; i++) {
+    const category = UseGetCategory(favourteItems[i].categoryId)
     elements.push(
       <Item
         text={favourteItems[i].text}
         favourite={favourteItems[i].favourite}
         done={favourteItems[i].done}
-        dueTo={favourteItems[i].dueTo}
         createdAt={favourteItems[i].createdAt}
+        categoryName={category.name}
         id={favourteItems[i].id}
         key={i}
       ></Item>

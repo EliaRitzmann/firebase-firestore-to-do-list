@@ -7,7 +7,7 @@ import { useCategory } from '../../contexts/CategoryContext';
 
 export const HomePanel = (props) => {
   const navigate = useNavigate();
-  const {changeCategoryName, changeCategoryId} = useCategory()
+  const {changeCategoryObject} = useCategory()
 
   function color(color){
     var out = "bg-gradient-to-br h-32 rounded-xl shadow shadow-slate-400"
@@ -36,8 +36,7 @@ export const HomePanel = (props) => {
 
 
 function open(){
-  changeCategoryName(props.name)
-  changeCategoryId(props.id)
+  changeCategoryObject({name: props.name, id: props.id, icon: props.icon, color: props.color})
   navigate(props.link)
 }
 

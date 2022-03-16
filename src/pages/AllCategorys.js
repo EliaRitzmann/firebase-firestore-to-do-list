@@ -1,4 +1,5 @@
 import React from "react";
+import { UseGetCategory } from "../components/category/UseGetCategory";
 
 import { Item } from "../components/item/Item";
 import { useDatabase } from "../contexts/FirestoreContext";
@@ -22,13 +23,14 @@ export const AllCategorys = () => {
     elements.push(<h1 key={1}>You have done all tasks :)</h1>);
   }
   for (var i = 0; i < toDoItems.length; i++) {
+    const category = UseGetCategory(toDoItems[i].categoryId)
     elements.push(
       <Item
         text={toDoItems[i].text}
         favourite={toDoItems[i].favourite}
         done={toDoItems[i].done}
-        dueTo={toDoItems[i].dueTo}
         createdAt={toDoItems[i].createdAt}
+        categoryName={category.name}
         id={toDoItems[i].id}
         key={i}
       ></Item>
@@ -41,14 +43,14 @@ export const AllCategorys = () => {
     doneElements.push(<h1 key={1}>check some tasks</h1>);
   }
   for (var i = 0; i < doneItems.length; i++) {
+    const category = UseGetCategory(doneItems[i].categoryId)
     doneElements.push(
       <Item
         text={doneItems[i].text}
         favourite={doneItems[i].favourite}
         done={doneItems[i].done}
-        dueTo={doneItems[i].dueTo}
         createdAt={doneItems[i].createdAt}
-        CategoryName={doneItems[i].CategoryName}
+        categoryName={category.name}
         id={doneItems[i].id}
         key={i}
       ></Item>
