@@ -33,6 +33,7 @@ export const CategoryElement = (props) => {
     setEdit((prevEdit) => !prevEdit);
     const newFileds = { name: name, icon: icon, color: color };
     await updateDoc(thisDoc, newFileds);
+    open()
   }
 
   const handleKeyDown = (event) => {

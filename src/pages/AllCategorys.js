@@ -30,7 +30,7 @@ export const AllCategorys = () => {
         favourite={toDoItems[i].favourite}
         done={toDoItems[i].done}
         createdAt={toDoItems[i].createdAt}
-        categoryName={category.name}
+        categoryName={category?.name}
         id={toDoItems[i].id}
         key={i}
       ></Item>
@@ -50,7 +50,7 @@ export const AllCategorys = () => {
         favourite={doneItems[i].favourite}
         done={doneItems[i].done}
         createdAt={doneItems[i].createdAt}
-        categoryName={category.name}
+        categoryName={category?.name}
         id={doneItems[i].id}
         key={i}
       ></Item>

@@ -27,33 +27,31 @@ export const AddItem = (props) => {
   }
 
   const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-        event.target.blur()
-        save()
+    if (event.key === "Enter") {
+      event.target.blur();
+      save();
     }
-  }
+  };
 
-  function blura(){
-    setText("")
-    setFocus(false)
+  function blura() {
+    setText("");
+    setFocus(false);
   }
 
   function toggleFocus() {
     setFocus((prevFocus) => !prevFocus);
   }
 
-  function backgroundColor(){
-    if(focus){
-      return("bg-white p-2 rounded-lg flex items-center justify-between w-full")
-    }else{
-      return("bg-neutral-300 p-2 rounded-lg flex items-center justify-between w-full")
+  function backgroundColor() {
+    if (focus) {
+      return "bg-white p-2 rounded-lg flex items-center justify-between w-full";
+    } else {
+      return "bg-neutral-300 p-2 rounded-lg flex items-center justify-between w-full";
     }
   }
 
   return (
-    <div
-      className={backgroundColor()}
-    >
+    <div className={backgroundColor()}>
       <input
         className="bg-transparent w-full border-transparent focus:border-transparent focus:ring-0 p-0.5 mx-2 "
         type="text"
@@ -65,23 +63,14 @@ export const AddItem = (props) => {
         onChange={(event) => setText(event.target.value)}
         maxLength={30}
       />
-      {focus && <div className="flex gap-1"><div className="bg-stone-200 h-7 w-7 p-0.5 rounded-md flex justify-center items-center"><svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-5 w-5 "
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={2}
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-        />
-      </svg>
-      </div>
-      
-      <h1 className="bg-stone-200 h-7 rounded-md px-1" onMouseDown={save}>Add</h1> </div>}
+      {focus && (
+        <div className="flex gap-1">
+          
+          <h1 className="bg-stone-200 h-7 rounded-md px-1" onMouseDown={save}>
+            Add
+          </h1>{" "}
+        </div>
+      )}
     </div>
   );
 };

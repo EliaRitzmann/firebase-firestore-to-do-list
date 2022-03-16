@@ -61,7 +61,7 @@ export const Item = (props) => {
         type="checkbox"
         checked={done}
         onChange={toggleDone}
-        className={"w-6 h-6 text-lime-400 rounded-md focus:ring-0 focus:ring-offset-0 border-none bg-stone-200"}
+        className={"w-6 h-6  rounded-md focus:ring-0 focus:ring-offset-0 border-none bg-stone-200"}
       />
         <input className="w-full mx-2 rounded-md border-transparent focus:border-transparent focus:ring-0 h-6 p-0.5" 
         type="text"
