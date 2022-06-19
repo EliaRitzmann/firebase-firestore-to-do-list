@@ -1,4 +1,10 @@
+# To do List with Firebase
 
+##About the Project
+
+**Build with**
+
+-[React.js](https://reactjs.org/)
 
 # Getting Started with Create React App
 
