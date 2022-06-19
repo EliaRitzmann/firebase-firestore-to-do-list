@@ -4,7 +4,7 @@
 
 **Build with**
 
--[React.js](https://reactjs.org/)
+- [React.js](https://reactjs.org/)
 
 # Getting Started with Create React App
 
