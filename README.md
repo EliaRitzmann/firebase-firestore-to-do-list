@@ -1,13 +1,13 @@
 # To-do List with Firebase
 
 [**Portfolio (German)**](https://portfolio.bbbaden.ch/view/view.php?t=YGioEkngzTWxXty1hqUm)
+
 [**Demo**](https://to-do-list-eliaritzmann.netlify.app/)
 
 ## About the Project
 
-This is a To-do List 
+This is a To-do List build with React.js and Firebase.
 
-![UI](https://portfolio.bbbaden.ch/artefact/file/download.php?file=83073&view=25486&time=1655660436)
 
 **Build with**
 
