@@ -1,10 +1,13 @@
-# To do List with Firebase
+# To-do List with Firebase
 
 ##About the Project
+
+[**Portfolio(German)**](https://portfolio.bbbaden.ch/view/view.php?t=YGioEkngzTWxXty1hqUm)
 
 **Build with**
 
 - [React.js](https://reactjs.org/)
+- [Firebase](https://firebase.google.com/)
 
 ## Getting Started 
 
